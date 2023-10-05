@@ -5,7 +5,7 @@
  */
 package saledesport;
 
-import java.time.LocalDate;
+
 import java.util.Date;
 import models.Categorie;
 import models.Equipement;
@@ -21,29 +21,9 @@ public class SaleDeSport {
      */
     //public EquipementService Equipe;
     public static void main(String[] args) {
-        // TODO code application logic here
-     /* Date d=new Date();
-        Equipement e =new Equipement("qlter",10,d,(float)5.2,1);
-        EquipementService es=new EquipementService ();
-        es.ajouterEquipement(e);
-        System.out.println(es.afficherEquipement());*/
-
-     //**Categorie c=new Categorie("NO","vg");
-    // Categorie CtoUpdate=new Categorie();
-    // CtoUpdate.setIdCategorie(1);
-     //CtoUpdate.setNomCategorie("said");
-    // CtoUpdate.setDescriptionCategorie("brahmi");
-    //Categorie CtoDelete=new Categorie();
-    //CtoDelete.setIdCategorie(1);
-    // CategorieService cs=new CategorieService();
-     //c.ajouterCategorie(c);
-    //c.modifier(CtoUpdate);
-    //cs.supprimer(CtoDelete);
-    // System.out.println(cs.afficherCategorie());
+        
     
-    
-    //Date dateAchat1 = new Date(122, 4, 20);
-   // Date dt ;
+   
   
    
    
@@ -81,9 +61,9 @@ public class SaleDeSport {
         es.ajouterEquipement( ep);
    
        //supprimer
-       // Equipement e1=new Equipement();
-       // e1.setID(1);
-       // es.supprimer(e1);
+        Equipement e1=new Equipement();
+        e1.setID(1);
+        es.supprimer(e1);
       //modifier equipement
       Equipement e2=new Equipement();
       e2.setID(1);
