@@ -11,32 +11,47 @@ package tn.esprit.com.salledesport.Entities;
 
 
 
+import java.util.Date;
 import java.util.Objects;
-import java.util.Set;
-
 public class Offer {
 
     private Integer idOffer;
     private String titleOffer;
     private String descriptionOffer;
-    private float prix; 
-    //public Set<Inscription> inscriptions;
+    private float prix;
+    private Date dateDebOffer;
+    private Date dateFinOffer;
 
     public Offer() {
     }
 
-    public Offer(Integer idOffer, String titleOffer, String descriptionOffer, float prix) {
+    public Offer(Integer idOffer, String titleOffer, String descriptionOffer, float prix, Date dateDebOffer, Date dateFinOffer) {
         this.idOffer = idOffer;
         this.titleOffer = titleOffer;
         this.descriptionOffer = descriptionOffer;
         this.prix = prix;
+        this.dateDebOffer = dateDebOffer;
+        this.dateFinOffer = dateFinOffer;
     }
 
-    public Offer(String titleOffer, String descriptionOffer, float prix) {
+    public Offer(String descriptionOffer, float prix, Date dateDebOffer, Date dateFinOffer) {
+        this.descriptionOffer = descriptionOffer;
+        this.prix = prix;
+        this.dateDebOffer = dateDebOffer;
+        this.dateFinOffer = dateFinOffer;
+    }
+    
+
+    public Offer(String titleOffer, String descriptionOffer, float prix, Date dateDebOffer, Date dateFinOffer) {
         this.titleOffer = titleOffer;
         this.descriptionOffer = descriptionOffer;
         this.prix = prix;
+        this.dateDebOffer = dateDebOffer;
+        this.dateFinOffer = dateFinOffer;
     }
+
+    
+
     
 
     //Les getter
@@ -52,6 +67,13 @@ public class Offer {
     public float getPrix() {
         return prix;
     }
+    public Date getDateDebOffer() {
+        return dateDebOffer;
+    }
+    public Date getDateFinOffer() {
+        return dateFinOffer;
+    }
+    
 
     
     //Les setter
@@ -67,14 +89,24 @@ public class Offer {
     public void setPrix(float prix) {
         this.prix = prix;
     }
-
-    
+    public void setDateDebOffer(Date dateDebOffer) {
+        this.dateDebOffer = dateDebOffer;
+    }
+    public void setDateFinOffer(Date dateFinOffer) {
+        this.dateFinOffer = dateFinOffer;
+    }
 
     @Override
     public String toString() {
-        return "Offer{" + "idOffer=" + idOffer + ", titleOffer=" + titleOffer + ", descriptionOffer=" + descriptionOffer + ", prix=" + prix + '}';
+        return "Offer{" + "idOffer=" + idOffer + 
+                ", titleOffer=" + titleOffer + 
+                ", descriptionOffer=" + descriptionOffer + 
+                ", prix=" + prix + 
+                ", dateDebOffer=" + dateDebOffer + 
+                ", dateFinOffer=" + dateFinOffer + '}'+
+                "\n";
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 3;

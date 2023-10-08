@@ -10,46 +10,27 @@ import java.util.Objects;
  *
  * @author chayma2
  */
-public class Reservation {
+public class Reservation_Offer {
     private Integer idReservation;
     private Integer idUser;
     private Date dateReservation;
     
-    private Integer idOffer;
+    private Offer offer;
 
-    public Reservation() {
+    public Reservation_Offer() {
     }
 
-    public Reservation(Integer idReservation, Integer idUser, Date dateReservation, Integer idOffer) {
-        this.idReservation = idReservation;
-        this.idUser = idUser;
-        this.dateReservation = dateReservation;
-        this.idOffer = idOffer;
-    }
-    
-
-    public Reservation(Integer idUser, Date dateReservation, Integer idOffer) {
-        this.idUser = idUser;
-        this.dateReservation = dateReservation;
-        this.idOffer = idOffer;
-    }
-
-    public Reservation(Integer idUser, Date dateReservation) {
-        this.idUser = idUser;
-        this.dateReservation = dateReservation;
-    }
-
-    
-
-    public Reservation(Integer idReservation, Integer idUser, Date dateReservation) {
+    public Reservation_Offer(Integer idReservation, Integer idUser, Date dateReservation) {
         this.idReservation = idReservation;
         this.idUser = idUser;
         this.dateReservation = dateReservation;
     }
+    
 
-   
-    
-    
+    public Reservation_Offer(Integer idUser, Date dateReservation) {
+        this.idUser = idUser;
+        this.dateReservation = dateReservation;
+    }
 
     //Les getter
   
@@ -66,12 +47,10 @@ public class Reservation {
         return idUser;
     }
 
-    public Integer getIdOffer() {
-        return idOffer;
+    public Offer getOffer() {
+        return offer;
     }
     
-
- 
 
    
     //Les setter
@@ -87,14 +66,23 @@ public class Reservation {
         this.idUser = idUser;
     }
 
-    public void setIdOffer(Integer idOffer) {
-        this.idOffer = idOffer;
+    public void setOffer(Offer offer) {
+        this.offer = offer;
     }
+    
+
+   
 
     @Override
-    public String toString() {
-        return "Reservation_Offer{" + "idReservation=" + idReservation + ", idUser=" + idUser + ", dateReservation=" + dateReservation + ", idOffer=" + idOffer + '}';
-    }
+   public String toString() {
+    return "Reservation_Offer{" +
+           "idReservation=" + idReservation +
+           ", idUser=" + idUser +
+           ", dateReservation=" + dateReservation +
+           ", idOffer=" + offer.getIdOffer() +  
+           '}' + "\n";  
+}
+
     
     
 
@@ -120,7 +108,7 @@ public class Reservation {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Reservation other = (Reservation) obj;
+        final Reservation_Offer other = (Reservation_Offer) obj;
         if (!Objects.equals(this.idReservation, other.idReservation)) {
             return false;
         }
