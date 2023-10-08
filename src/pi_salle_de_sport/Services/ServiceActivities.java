@@ -7,16 +7,20 @@ package pi_salle_de_sport.Services;
 
 import interfaces.IService;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pi_salle_de_sport.Entities.Activities;
+import pi_salle_de_sport.Entities.Categorie;
 import pi_salle_de_sport.Entities.Reservation;
+import pi_salle_de_sport.Entities.User;
 import pi_salle_de_sport.Utils.MyDB;
 
 /**
@@ -25,86 +29,111 @@ import pi_salle_de_sport.Utils.MyDB;
  */
 public class ServiceActivities implements IService <Activities> {
 Connection cnx = MyDB.getInstance().getCnx();
-    @Override
-    public void addReservation(Activities t) {
-         
- try {
-     // Convertir la date en une chaîne de caractères au format MySQL
-SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-String dateDebFormatted = dateFormat.format(t.getDateDeb());
-String dateFinFormatted = dateFormat.format(t.getDateFin());
+   @Override
+public void addReservation(Activities t) {
+    int userId = t.getIdCoach().getId_user();
 
-// Utiliser la date formatée dans votre requête SQL
-String req = "INSERT INTO `activites` (`categorie`, `date_deb`, `date_fin`, `description`, `id_coach`, `salle`, `titre`) " +
-        "VALUES ('" + t.getCategorie() + "', '" + dateDebFormatted + "', '" +
-        dateFinFormatted+ "', '" + t.getDescription().replace("'", "''") + "', '" + 
-        t.getIdCoach() + "', '" + t.getSalle() + "', '" + t.getTitre().replace("'", "''") + "')";
-
-
-
-            Statement st = cnx.createStatement();
-            st.executeUpdate(req);
-            System.out.println("Reservation Added successfully!");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    @Override
-public List<Activities> afficher() {
-    List<Activities> activitiesList = new ArrayList<>();
-    String req = "SELECT * FROM `activites`";
     try {
-        Statement st = cnx.createStatement();
-        ResultSet rs = st.executeQuery(req);
-        while (rs.next()) {
-            Activities a = new Activities();
-            a.setCode(rs.getInt("code"));
-            a.setCategorie(rs.getString("categorie"));
-            a.setDateDeb(rs.getDate("date_deb"));
-            a.setDateFin(rs.getDate("date_fin"));
-            a.setDescription(rs.getString("description"));
-            a.setIdCoach(rs.getInt("id_coach"));
-            a.setSalle(rs.getString("salle"));
-            a.setTitre(rs.getString("titre"));
-            activitiesList.add(a);
-        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateDebFormatted = dateFormat.format(t.getDateDeb());
+        String dateFinFormatted = dateFormat.format(t.getDateFin());
+
+        String req = "INSERT INTO `activites` (`categorie`, `date_deb`, `date_fin`, `description`, `id_user`, `salle`, `titre`) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement p = cnx.prepareStatement(req);
+        p.setString(1, t.getCategorie().toString());
+        p.setString(2, dateDebFormatted);
+        p.setString(3, dateFinFormatted);
+        p.setString(4, t.getDescription().replace("'", "''"));
+        p.setInt(5, userId);
+        p.setString(6, t.getSalle());
+        p.setString(7, t.getTitre().replace("'", "''"));
+
+        p.executeUpdate();
+        System.out.println("Reservation added successfully!");
     } catch (SQLException ex) {
-        Logger.getLogger(IService.class.getName()).log(Level.SEVERE, null, ex);
+        ex.printStackTrace();
     }
-    return activitiesList;
 }
+
+
+    @Override
+    public List<Activities> afficher() {
+        List<Activities> activitiesList = new ArrayList<>();
+        String req = "SELECT * FROM `activites`";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                Activities a = new Activities();
+                // User categ_gall = User.valueOf(id_coach);
+
+                a.setCode(rs.getInt("code"));
+                a.setCategorie(Categorie.valueOf(rs.getString("categorie")));
+                a.setDateDeb(rs.getDate("date_deb"));
+                a.setDateFin(rs.getDate("date_fin"));
+                a.setDescription(rs.getString("description"));
+                int userId = rs.getInt("id_user");
+                UserService userService = new UserService();
+                User user = userService.getUserById(userId);
+                a.setIdCoach(user);
+                a.setSalle(rs.getString("salle"));
+                a.setTitre(rs.getString("titre"));
+                activitiesList.add(a);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(IService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return activitiesList;
+    }
 
     
 
     @Override
-       public Boolean modifier(Activities t) {
-           SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-String dateDebFormatted = dateFormat.format(t.getDateDeb());
-String dateFinFormatted = dateFormat.format(t.getDateFin());
+public Boolean modifier(Activities t) {
+    int userId = t.getIdCoach().getId_user();
+
+    try {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateDebFormatted = dateFormat.format(t.getDateDeb());
+        String dateFinFormatted = dateFormat.format(t.getDateFin());
+
         String req = "UPDATE `activites` SET " +
-        "`categorie`='" + t.getCategorie() + "', " +
-        "`date_deb`='" + dateDebFormatted + "', " +
-        "`date_fin`='" + dateFinFormatted + "', " +
-        "`description`='" + t.getDescription().replace("'", "''") + "', " +
-        "`id_coach`='" + t.getIdCoach() + "', " +
-        "`salle`='" + t.getSalle() + "', " +
-        "`titre`='" + t.getTitre().replace("'", "''") + "' " +
-        "WHERE `code`=" + t.getCode();
+                     "`categorie`=?, " +
+                     "`date_deb`=?, " +
+                     "`date_fin`=?, " +
+                     "`description`=?, " +
+                     "`id_user`=?, " +
+                     "`salle`=?, " +
+                     "`titre`=? " +
+                     "WHERE `code`=?";
 
-        try {
-           Statement stm = cnx.createStatement();
+        PreparedStatement preparedStatement = cnx.prepareStatement(req);
+        preparedStatement.setString(1, t.getCategorie().toString());
+        preparedStatement.setString(2, dateDebFormatted);
+        preparedStatement.setString(3, dateFinFormatted);
+        preparedStatement.setString(4, t.getDescription().replace("'", "''"));
+        preparedStatement.setInt(5, userId);
+        preparedStatement.setString(6, t.getSalle());
+        preparedStatement.setString(7, t.getTitre().replace("'", "''"));
+        preparedStatement.setInt(8, t.getCode());
 
-            stm = cnx.createStatement();
-            stm.executeUpdate(req);
-            System.out.println("reservation modifiée avec succés");
+        int rowsUpdated = preparedStatement.executeUpdate();
+
+        if (rowsUpdated > 0) {
+            System.out.println("Activity modified successfully.");
             return true;
-        } catch (SQLException ex) {
-            System.err.println (ex.getMessage());
-           
+        } else {
+            System.out.println("No activity found with code " + t.getCode() + ". No modification performed.");
+            return false;
         }
-        return false;
+    } catch (SQLException ex) {
+        System.err.println(ex.getMessage());
     }
+
+    return false;
+}
 
     @Override
    public Boolean supprimer(Activities r) {

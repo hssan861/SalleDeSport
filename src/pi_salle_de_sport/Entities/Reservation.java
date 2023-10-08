@@ -14,10 +14,10 @@ import java.util.Date;
 public class Reservation {
     private int id;
     private Date date_res;
-    private int id_user;
+    private User id_user;
     private int code;
 
-    public Reservation(Date date_res, int id_user, int code) {
+    public Reservation(Date date_res, User id_user, int code) {
         this.date_res = date_res;
         this.id_user = id_user;
         this.code = code;
@@ -43,11 +43,11 @@ public class Reservation {
         this.date_res = date_res;
     }
 
-    public int getIdUser() {
+    public User getIdUser() {
         return id_user;
     }
 
-    public void setIdUser(int id_user) {
+    public void setIdUser(User id_user) {
         this.id_user = id_user;
     }
 

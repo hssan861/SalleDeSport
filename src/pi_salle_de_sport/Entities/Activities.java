@@ -16,17 +16,17 @@ public class Activities {
     private String titre;
     private Date date_deb;
     private Date date_fin;
-    private int id_coach;
-    private String categorie;
+    private User coach;
+    private Categorie categorie;
     private String description;
     private String salle;
 
-    public Activities( String titre, Date date_deb, Date date_fin, int id_coach, String categorie, String description,String salle) {
+    public Activities( String titre, Date date_deb, Date date_fin, User coach,pi_salle_de_sport.Entities.Categorie  categorie, String description,String salle) {
         
         this.titre = titre;
         this.date_deb = date_deb;
         this.date_fin = date_fin;
-        this.id_coach = id_coach;
+        this.coach = coach;
         this.categorie = categorie;
         this.description = description;
         this.salle = salle;
@@ -69,19 +69,21 @@ public class Activities {
         this.date_fin = date_fin;
     }
 
-    public int getIdCoach() {
-        return id_coach;
+    public User getIdCoach() {
+        return coach;
     }
 
-    public void setIdCoach(int id_coach) {
-        this.id_coach = id_coach;
-    }
 
-    public String getCategorie() {
+ public void setIdCoach(User coach) {
+    this.coach = coach;
+}
+
+
+    public Categorie getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(String categorie) {
+    public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
     }
 
@@ -100,24 +102,13 @@ public class Activities {
         this.salle = salle;
     }
 
-    public void ajouter() {
-
+    @Override
+    public String toString() {
+        return "Activities{" + "code=" + code + ", titre=" + titre + ", date_deb=" + date_deb + ", date_fin=" + date_fin + ", coach=" + coach + ", categorie=" + categorie + ", description=" + description + ", salle=" + salle + '}';
     }
 
-    public void modifier(String nouveauTitre, String nouvelleDescription) {
+   
 
-    }
-
-    public void supprimer() {
-
-    }
-
-    public void consulter() {
-        System.out.println("Titre : " + this.titre);
-        System.out.println("Description : " + this.description);
-        System.out.println("Catégorie : " + this.categorie);
-        System.out.println("Dates : " + this.date_deb.toString() + " - " + this.date_fin.toString());
-        System.out.println("ID Coach : " + this.id_coach);
-    }
+   
     
 }
