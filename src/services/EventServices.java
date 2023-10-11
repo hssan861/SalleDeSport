@@ -32,17 +32,19 @@ public class EventServices {
     
     //Add 
     public void ajouterEvent(Event E){
-        String req = "INSERT INTO 'events'('titreEvent','nomCoach','typeEvent','AdresseEvent','prixEvent','dateEvent') "+" VALUES (?,?,?)";
+        String req = "INSERT INTO events(titreEvent,nomCoach,typeEvent,AdresseEvent,dateEvent,prixEvent,imgEvent) VALUES (?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, E.getTitreEvent());
             ps.setString(2, E.getNomCoach());
             ps.setString(3, E.getTypeEvent());
             ps.setString(4, E.getAdresseEvent());
-            ps.setDouble(5, E.getPrixEvent());
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
              String date = sdf.format(E.getDateEvent());
-             ps.setString(6,date);
+             ps.setString(5,date);
+            ps.setDouble(6, E.getPrixEvent());
+            ps.setString(7,E.getImgEvent());
+            
             ps.executeUpdate();
             System.out.println("Evenement ajoutée avec succes!");
         } catch (SQLException ex) {
@@ -62,13 +64,14 @@ public class EventServices {
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
                 Event E = new Event();
-                E.setIdEvent(rs.getInt("idEvent"));//(rs.getInt("id"));
+                E.setIdEvent(rs.getInt("idEvent"));
                 E.setTitreEvent(rs.getString("titreEvent"));
                 E.setNomCoach(rs.getString("nomCoach"));
                 E.setTypeEvent(rs.getString("typeEvent"));
                 E.setAdresseEvent(rs.getString("adresseEvent"));
                 E.setPrixEvent(rs.getDouble("prixEvent"));
                 E.setDateEvent(rs.getDate("dateEvent"));
+                E.setImgEvent(rs.getString("imgEvent"));
                 Events.add(E);
             }
             
@@ -81,7 +84,7 @@ public class EventServices {
     }
        public void modifierEvent(Event E) {
           try {
-            String req = "UPDATE events SET titreEvent=?, nomCoach=?, typeEvent=?, adresseEvent=?, prixEvent=?, dateEvent=? WHERE idEvent=?";
+            String req = "UPDATE events SET titreEvent=?, nomCoach=?, typeEvent=?, adresseEvent=?, prixEvent=?, dateEvent=?,ImgEvent=? WHERE idEvent=?";
 
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, E.getTitreEvent());
@@ -92,8 +95,9 @@ public class EventServices {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
              String date = sdf.format(E.getDateEvent());
              ps.setString(6,date);
-           
-        ps.setInt(7, E.getIdEvent());
+            ps.setString(7,E.getImgEvent());
+        ps.setInt(8, E.getIdEvent());
+       
 
         int rowsUpdated = ps.executeUpdate();
         if (rowsUpdated > 0) {
@@ -123,23 +127,29 @@ public class EventServices {
             throw new RuntimeException(ex);
         }
 }
-/*public void deleteEvent(int idEvent) {
-   
-    try {
-        
-        String req = "DELETE FROM events WHERE idEvent =?";
-        PreparedStatement ps = cnx.prepareStatement(req);
-       ps.setInt(1, idEvent);
-        int rowsDeleted = ps.executeUpdate(req);
 
-        if (rowsDeleted > 0) {
-            System.out.println("Événement supprimé avec succès !");
-        } else {
-            System.out.println("Aucun événement n'a été supprimé. Vérifiez l'ID de l'événement.");
+        public Event getEventById(int idEvent) {
+        Event event = null;
+        String req = "SELECT * FROM events WHERE idEvent = ?";
+        try {
+            PreparedStatement preparedStatement = cnx.prepareStatement(req);
+            preparedStatement.setInt(1, idEvent);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                event = new Event();
+                event.setIdEvent(resultSet.getInt("idEvent"));
+                event.setTitreEvent(resultSet.getString("titreEvent"));
+                event.setNomCoach(resultSet.getString("nomCoach"));
+                event.setTypeEvent(resultSet.getString("typeEvent"));
+                event.setAdresseEvent(resultSet.getString("adresseEvent"));
+                event.setDateEvent(resultSet.getDate("dateEvent"));
+                event.setPrixEvent(resultSet.getDouble("prixEvent"));
+                event.setImgEvent(resultSet.getString("imgEvent"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EventServices.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } catch (SQLException ex) {
-        System.out.println(ex);
+        return event;
     }
-}*/
  
 }

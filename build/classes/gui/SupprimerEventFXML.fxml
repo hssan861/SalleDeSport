@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="222.0" prefWidth="592.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SupprimerEventFXMLController">
+   <children>
+      <AnchorPane layoutX="5.0" layoutY="5.0" prefHeight="212.0" prefWidth="582.0" style="-fx-background-color: #55682F;">
+         <children>
+            <Label layoutX="48.0" layoutY="39.0" prefHeight="52.0" prefWidth="485.0" text="ETES VOUS SUR DE SUPPRIMER CET EVENEMENT ?" textAlignment="CENTER" textFill="#f2f2f2">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="aa" layoutX="136.0" layoutY="136.0" mnemonicParsing="false" onAction="#confirmerSuppEvent" prefHeight="34.0" prefWidth="128.0" text="Confirmer">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button layoutX="333.0" layoutY="136.0" mnemonicParsing="false" onAction="#annulerSuppEvent" prefHeight="34.0" prefWidth="128.0" text="Annuler">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

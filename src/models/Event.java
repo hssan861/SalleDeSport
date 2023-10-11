@@ -14,26 +14,27 @@ import java.util.Date;
 public class Event {
     //var
     private int idEvent;
-    private String titreEvent,nomCoach,typeEvent,adresseEvent;
+    private String titreEvent,nomCoach,typeEvent,adresseEvent,imgEvent;
     private Date dateEvent;
     private double PrixEvent;
-   //private admin idAdmin;
+   
     
     
     //constructor
     public Event() {
     }
 
-    public Event(String titreEvent, String nomCoach, String typeEvent, String adresseEvent, Date dateEvent, double PrixEvent) {
+    public Event(String titreEvent, String nomCoach, String typeEvent, String adresseEvent, Date dateEvent, double PrixEvent,String imgEvent) {
         this.titreEvent = titreEvent;
         this.nomCoach = nomCoach;
         this.typeEvent = typeEvent;
         this.adresseEvent = adresseEvent;
         this.dateEvent = dateEvent;
         this.PrixEvent = PrixEvent;
+        this.imgEvent = imgEvent;
     }
 
-    public Event(int idEvent, String titreEvent, String nomCoach, String typeEvent, String adresseEvent, Date dateEvent, double PrixEvent) {
+    public Event(int idEvent, String titreEvent, String nomCoach, String typeEvent, String adresseEvent, Date dateEvent, double PrixEvent,String imgEvent) {
         this.idEvent = idEvent;
         this.titreEvent = titreEvent;
         this.nomCoach = nomCoach;
@@ -41,6 +42,7 @@ public class Event {
         this.adresseEvent = adresseEvent;
         this.dateEvent = dateEvent;
         this.PrixEvent = PrixEvent;
+        this.imgEvent = imgEvent;
     }
 
     //getters and setters
@@ -99,14 +101,23 @@ public class Event {
     public void setPrixEvent(double PrixEvent) {
         this.PrixEvent = PrixEvent;
     }
+
+    public String getImgEvent() {
+        return imgEvent;
+    }
+
+    public void setImgEvent(String imgEvent) {
+        this.imgEvent = imgEvent;
+    }
     
     //Display
 
     @Override
     public String toString() {
-        return "Event{" + "idEvent=" + idEvent + ", titreEvent=" + titreEvent + ", nomCoach=" + nomCoach + ", typeEvent=" + typeEvent + ", adresseEvent=" + adresseEvent + ", dateEvent=" + dateEvent + ", PrixEvent=" + PrixEvent + '}';
+        return "Event{" + "idEvent=" + idEvent + ", titreEvent=" + titreEvent + ", nomCoach=" + nomCoach + ", typeEvent=" + typeEvent + ", adresseEvent=" + adresseEvent + ", imgEvent=" + imgEvent + ", dateEvent=" + dateEvent + ", PrixEvent=" + PrixEvent + '}';
     }
 
+    
     
    
 }

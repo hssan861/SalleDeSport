@@ -12,9 +12,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import models.Event;
 import services.EventServices;
-import services.ParticipantServices;
+import services.ParticipationServices;
 import java.text.ParseException;
-import models.Participant;
+import models.Participation;
 
 /**
  *
@@ -27,45 +27,71 @@ public class SalleDeSport_event {
      */
     public static void main(String[] args) throws ParseException, SQLException {
         // TODO code application logic here
-         //1
+         
        //ajout d'un event
        EventServices ps = new EventServices();
-        //afficher 
-        //System.out.println(ps.afficherEvent());
+       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+       Date dateEvent = dateFormat.parse("2024-06-18");
+       /*Event Eventnew = new Event ("match","mazen","defis","boumhal",dateEvent,30,"image");
+       
+       ps.ajouterEvent(Eventnew);
+       */
+         //afficher event
+        System.out.println(ps.afficherEvent());
         //ajout d'un participant
-        ParticipantServices p = new ParticipantServices();
-        
-       // System.out.println(p.afficherParticipant());
+        Event e = new Event(27,"match","mazen","defis","boumhal",dateEvent,30,"image");
+        ParticipationServices pat = new ParticipationServices();
+       /* SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+       Date datePart = s.parse("2024-02-19");
+       Participation partnew = new Participation(1,e,datePart);
+       pat.ajouterParticipation(partnew);*/
+     
+      //  afficher participation
+       //System.out.println(pat.afficherParticipation());
         
         // Create an instance of the Event class with the data you want to update
-  /*  Event eventToUpdate = new Event();
+ /*Event eventToUpdate = new Event();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date dateEvent = sdf.parse("2023-06-18");
             eventToUpdate.setDateEvent(dateEvent);          
-    eventToUpdate.setIdEvent(1); // Replace 1 with the actual event ID you want to update
-    eventToUpdate.setTitreEvent("Camping");
+    eventToUpdate.setIdEvent(18); 
+    eventToUpdate.setTitreEvent("crossfit");
     eventToUpdate.setNomCoach("ayoub");
     eventToUpdate.setTypeEvent("yoga");
     eventToUpdate.setAdresseEvent("zaghouane");
-    eventToUpdate.setPrixEvent(50.0); 
+    eventToUpdate.setPrixEvent(80.0); 
+        eventToUpdate.setImgEvent("image");
     // Call the modifierEvent method to update the event
    ps.modifierEvent(eventToUpdate); 
    System.out.println(ps.afficherEvent());*/
-   //int id = 2;
    
    
-  /* int idPartDel = 7;
-   Participant PartToDelete = new Participant();
-   PartToDelete.setIdUser(idPartDel);
-   p.deletePartcipant(PartToDelete);
-   System.out.println(p.afficherParticipant());
+   //suppresseion d'un participation
+  /* int idPartDel = 10;
+   Participation PartToDelete = new Participation();
+   PartToDelete.setIdPart(idPartDel);
+   pat.deletePartcipant(PartToDelete);
+   System.out.println(pat.afficherParticipation());
    */
-   
-     int id= 2; 
+   //suppression d'un event
+    /* int id=22; 
          Event eventToDelete = new Event();
          eventToDelete.setIdEvent(id);
          ps.deleteEvent(eventToDelete);
-   System.out.println(ps.afficherEvent());
-}
-}
+   System.out.println(ps.afficherEvent());*/
+    
+//modification d'une participation
+  /* Participation partToUpdate = new Participation();
+    partToUpdate.setIdPart(28);    
+    partToUpdate.setEvent(e);
+    partToUpdate.setIdUser(10); 
+ 
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date datepart = sdf.parse("2023-06-18");
+        partToUpdate.setDatePart(datepart);  
+    
+    // Call the modifierEvent method to update the event
+   pat.modifierParticipation(partToUpdate); 
+   System.out.println(pat.afficherParticipation());*/
+}}
 
