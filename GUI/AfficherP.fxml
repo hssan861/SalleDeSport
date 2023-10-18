@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pi.GUI.AfficherPController">
+   <children>
+      <AnchorPane layoutX="242.0" layoutY="124.0" prefHeight="309.0" prefWidth="454.0" style="-fx-background-color: white;">
+         <children>
+            <TableView fx:id="table_view" layoutY="-1.0" prefHeight="338.0" prefWidth="454.0">
+               <columns>
+                  <TableColumn fx:id="col_titre" prefWidth="75.0" text="Titre" />
+                  <TableColumn fx:id="col_Image" prefWidth="112.0" text="Image" />
+                  <TableColumn fx:id="col_date" prefWidth="88.0" text="Date" />
+                  <TableColumn fx:id="col_description" prefWidth="76.0" text="Description" />
+                  <TableColumn fx:id="col_catégorie" prefWidth="96.0" text="Catégorie" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-2.0" prefHeight="530.0" prefWidth="186.0" style="-fx-background-color: green;">
+         <children>
+            <ImageView fitHeight="192.0" fitWidth="176.0" layoutX="5.0" layoutY="178.0">
+               <image>
+                  <Image url="@../../../../../../Downloads/icone-de-panier-isolee-sur-fond-blanc-pictogramme-de-chariot-couleur-logo-du-centre-commercial-affiche-du-magasin-en-ligne-illustration-vectorielle-2f6na3g.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnafficher" layoutX="23.0" layoutY="402.0" mnemonicParsing="false" onAction="#aff" prefHeight="26.0" prefWidth="137.0" text="Afficher" textFill="GREEN" />
+            <Button fx:id="supprBtn" layoutX="23.0" layoutY="450.0" mnemonicParsing="false" onAction="#deleteSelectedProduct" prefHeight="26.0" prefWidth="138.0" text="supprimer" textFill="GREEN" />
+            <Label layoutY="14.0" prefHeight="134.0" prefWidth="176.0" styleClass="title-label" text="Gestion E-commerce" textFill="WHITE">
+               <font>
+                  <Font name="Arabic Typesetting" size="29.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="103.0" fitWidth="176.0" layoutX="696.0" layoutY="4.0">
+         <image>
+            <Image url="@../../../../../380428727_1040086700454796_151680136043784588_n.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="313.0" layoutY="41.0" prefHeight="39.0" prefWidth="282.0" styleClass="title-label" text="Affichage de produits" textFill="#0ec914">
+         <font>
+            <Font name="Arabic Typesetting" size="35.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

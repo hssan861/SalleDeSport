@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="799.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pi.GUI.choosePrdController">
+   <children>
+      <TableView fx:id="table_view1" layoutX="218.0" layoutY="123.0" prefHeight="352.0" prefWidth="568.0">
+         <columns>
+            <TableColumn fx:id="col_titre1" prefWidth="75.0" text="Titre" />
+            <TableColumn fx:id="col_Image1" prefWidth="112.0" text="Image" />
+            <TableColumn fx:id="col_date1" prefWidth="88.0" text="Date" />
+            <TableColumn fx:id="col_description1" prefWidth="76.0" text="Description" />
+            <TableColumn fx:id="col_catégorie1" prefWidth="96.0" text="Catégorie" />
+            <TableColumn fx:id="choose" prefWidth="96.0" text="Choisir produit" />
+            
+         </columns>
+      </TableView>
+      <AnchorPane layoutX="-3.0" layoutY="-2.0" prefHeight="573.0" prefWidth="214.0" style="-fx-background-color: green;">
+         <children>
+            <Label layoutX="16.0" layoutY="14.0" prefHeight="150.0" prefWidth="182.0" styleClass="title-label" text="Gestion E-commerce" textFill="WHITE">
+               <font>
+                  <Font name="Arabic Typesetting" size="29.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnval" layoutX="54.0" layoutY="424.0" mnemonicParsing="false" onAction="#validerp" prefHeight="35.0" prefWidth="105.0" text="Valider" textFill="GREEN" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="192.0" fitWidth="176.0" layoutX="28.0" layoutY="180.0">
+         <image>
+            <Image url="@../../../../../../Downloads/icone-de-panier-isolee-sur-fond-blanc-pictogramme-de-chariot-couleur-logo-du-centre-commercial-affiche-du-magasin-en-ligne-illustration-vectorielle-2f6na3g.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="99.0" fitWidth="195.0" layoutX="604.0" layoutY="1.0">
+         <image>
+            <Image url="@../../../../../380428727_1040086700454796_151680136043784588_n.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="323.0" layoutY="51.0" prefHeight="39.0" prefWidth="282.0" styleClass="title-label" text="Affichage de produits" textFill="#0ec914">
+         <font>
+            <Font name="Arabic Typesetting" size="35.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnafficher" layoutX="218.0" layoutY="491.0" mnemonicParsing="false" onAction="#aff" text="Afficher Produits" />
+   </children>
+</AnchorPane>
