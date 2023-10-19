@@ -207,8 +207,6 @@ private void update(ActionEvent event) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Categorie.fxml"));
             Parent root = loader.load();
 
-            // Get the controller for the Categorie interface
-            CategorieController categorieController = loader.getController();
 
             Stage stage = new Stage();
             stage.setTitle("Categorie Interface");

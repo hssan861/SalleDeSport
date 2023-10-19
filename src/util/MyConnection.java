@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class MyConnection {
         
     //DB Credentials
-    final String URL = "jdbc:mysql://localhost:3306/SalleDeSport";
+    final String URL = "jdbc:mysql://localhost:3306/sale";
     final String USR = "root";
     final String PWD = "";
     
