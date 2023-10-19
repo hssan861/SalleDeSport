@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="417.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierUserController">
+    <children>
+        <Label layoutX="27.0" layoutY="76.0" prefHeight="18.0" prefWidth="62.0" text="Nom : " />
+        <Label layoutX="28.0" layoutY="120.0" text="Prenom : " />
+        <Label layoutX="28.0" layoutY="159.0" text="Mot de passe : " />
+        <Label layoutX="27.0" layoutY="231.0" text="Email : " />
+        <Label layoutX="30.0" layoutY="304.0" text="Age : " />
+        <Label layoutX="28.0" layoutY="268.0" prefHeight="18.0" prefWidth="62.0" text="Image : " />    
+        <TextField fx:id="nomField" layoutX="151.0" layoutY="73.0" />
+        <TextField fx:id="prenomField" layoutX="152.0" layoutY="116.0" />
+        <TextField fx:id="passwordField" layoutX="152.0" layoutY="155.0" />
+        <TextField fx:id="emailField" layoutX="152.0" layoutY="227.0" />
+        <TextField fx:id="imageField" layoutX="151.0" layoutY="265.0" />
+        <TextField fx:id="ageField" layoutX="151.0" layoutY="300.0" />  
+        <Button layoutX="207.0" layoutY="351.0" mnemonicParsing="false" onAction="#handleEnregistrerButtonAction" text="Modifier" />
+        <ComboBox fx:id="roleComboBox" layoutX="150.0" layoutY="187.0" prefWidth="150.0" />
+      <Label layoutX="29.0" layoutY="191.0" text="Role : " />
+      <Button fx:id="retourButton" layoutX="532.0" layoutY="377.0" mnemonicParsing="false" onAction="#handleRetourButton" text="Retour" />
+  </children>
+</AnchorPane>
