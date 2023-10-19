@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -28,17 +29,17 @@ public class ParticipationServices {
    
     //Add 
     public void ajouterParticipation(Participation P){
-        String req = "INSERT INTO participation(idEvent,idUser,DatePart) VALUES (?,?,?)";
+        String req = "INSERT INTO participation( idEvent,Nom, Prenom, Ntel, DatePart) VALUES (?,?,?,?,?)";
         int idEvent = P.getEvent().getIdEvent();
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-             
-            ps.setInt(1, P.getIdUser());
-            ps.setInt(2,idEvent);
+             ps.setInt(1,idEvent);
+            ps.setString(2, P.getNom());
+            ps.setString(3,P.getPrenom());
+            ps.setString(4,P.getNtel());
+            LocalDate date = P.getDatePart();
+        ps.setObject(5, java.sql.Date.valueOf(date));
             
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
-             String datePart = sdf.format(P.getDatePart());
-            ps.setString(3,datePart);
              int rowsInserted = ps.executeUpdate();
             if (rowsInserted > 0) {
                 System.out.println("Participation ajoutée avec succès!");
@@ -66,10 +67,11 @@ public class ParticipationServices {
                 int idEvent = rs.getInt("idEvent");
                 EventServices es = new EventServices();
                 Event event = es.getEventById(idEvent);
-                P.setEvent(event);
-              
-                P.setIdUser(rs.getInt("idUser"));
-                P.setDatePart(rs.getDate("DatePart"));
+                P.setIdEvent(event);
+               P.setNom(rs.getString("Nom"));
+                P.setPrenom(rs.getString("Prenom"));
+                 P.setNtel(rs.getString("Ntel"));
+                 P.setDatePart(rs.getDate("DatePart").toLocalDate());
               
                 Participations.add(P);
             }
@@ -84,15 +86,17 @@ public class ParticipationServices {
     //modifier
      public void modifierParticipation(Participation p) {
           try {
-            String req = "UPDATE participation SET idUser=?,DatePart=? WHERE idPart=?";
+            String req = "UPDATE participation SET Nom=?,Prenom=?,Ntel=?,DatePart=? WHERE idPart=?";
+       // int idEvent = p.setEvent().setIdEvent();
 
             PreparedStatement ps = cnx.prepareStatement(req);
-           // ps.setInt(1, p.getIdEvent());
-            ps.setInt(1,p.getIdUser());
-             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
-             String Date = sdf.format(p.getDatePart());
-            ps.setString(2,Date);
-        ps.setInt(3, p.getIdPart());
+           // ps.setInt(1, idEvent);
+            ps.setString(1,p.getNom());
+            ps.setString(2,p.getPrenom());
+            ps.setString(3,p.getNtel());
+           LocalDate date = p.getDatePart();
+        ps.setObject(4, java.sql.Date.valueOf(date));
+        ps.setInt(5, p.getIdPart());
 
         int rowsUpdated = ps.executeUpdate();
         if (rowsUpdated > 0) {

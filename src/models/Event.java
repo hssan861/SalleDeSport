@@ -5,6 +5,8 @@
  */
 package models;
 
+import java.time.LocalDate;
+import static java.time.temporal.TemporalQueries.localDate;
 import java.util.Date;
 
 /**
@@ -15,7 +17,7 @@ public class Event {
     //var
     private int idEvent;
     private String titreEvent,nomCoach,typeEvent,adresseEvent,imgEvent;
-    private Date dateEvent;
+    private LocalDate dateEvent;
     private double PrixEvent;
    
     
@@ -24,7 +26,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(String titreEvent, String nomCoach, String typeEvent, String adresseEvent, Date dateEvent, double PrixEvent,String imgEvent) {
+    public Event(String titreEvent, String nomCoach, String typeEvent, String adresseEvent, LocalDate dateEvent, double PrixEvent,String imgEvent) {
         this.titreEvent = titreEvent;
         this.nomCoach = nomCoach;
         this.typeEvent = typeEvent;
@@ -34,7 +36,7 @@ public class Event {
         this.imgEvent = imgEvent;
     }
 
-    public Event(int idEvent, String titreEvent, String nomCoach, String typeEvent, String adresseEvent, Date dateEvent, double PrixEvent,String imgEvent) {
+    public Event(int idEvent, String titreEvent, String nomCoach, String typeEvent, String adresseEvent, LocalDate dateEvent, double PrixEvent,String imgEvent) {
         this.idEvent = idEvent;
         this.titreEvent = titreEvent;
         this.nomCoach = nomCoach;
@@ -86,11 +88,11 @@ public class Event {
         this.adresseEvent = adresseEvent;
     }
 
-    public Date getDateEvent() {
+    public LocalDate getDateEvent() {
         return dateEvent;
     }
 
-    public void setDateEvent(Date dateEvent) {
+    public void setDateEvent(LocalDate dateEvent) {
         this.dateEvent = dateEvent;
     }
 
@@ -114,7 +116,7 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event{" + "idEvent=" + idEvent + ", titreEvent=" + titreEvent + ", nomCoach=" + nomCoach + ", typeEvent=" + typeEvent + ", adresseEvent=" + adresseEvent + ", imgEvent=" + imgEvent + ", dateEvent=" + dateEvent + ", PrixEvent=" + PrixEvent + '}';
+        return   titreEvent+"   " + nomCoach  +"   "+ typeEvent +"   "+ adresseEvent+"   " + imgEvent+"   " + dateEvent+"   " + PrixEvent ;
     }
 
     

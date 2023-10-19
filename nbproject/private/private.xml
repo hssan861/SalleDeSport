@@ -5,10 +5,10 @@
         <group>
             <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/AjoutEventFXMLController.java</file>
             <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/ModifierEventFXMLController.java</file>
-            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/AjoutEventFXML.fxml</file>
+            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/ReserverFXMLController.java</file>
             <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/AfficherEventFXMLController.java</file>
             <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/EvenementFXMain.java</file>
-            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/SupprimerEventFXMLController.java</file>
+            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/AfficherPartFXMLController.java</file>
         </group>
     </open-files>
 </project-private>

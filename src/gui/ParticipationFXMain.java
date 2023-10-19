@@ -13,46 +13,35 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import models.Event;
-import services.EventServices;
+import models.Participation;
+import services.ParticipationServices;
 
 /**
  *
  * @author rayen
  */
-public class EvenementFXMain extends Application {
-    static Event event = new Event();
-    static Event ee = new Event();
-    EventServices es = new EventServices();
-     
+
+public class ParticipationFXMain extends Application {
+
+    static Participation part = new Participation();
+  static Participation ep = new Participation();
+  ParticipationServices ps = new ParticipationServices();
+    
     @Override
     public void start(Stage primaryStage) {
-        /* try {
-            Parent root = FXMLLoader.load(getClass().getResource("AjoutEventFXML.fxml"));
+         try {
+            Parent root = FXMLLoader.load(getClass().getResource("afficherPartFXML.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Ajout");
-            primaryStage.show();
-        
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }*/
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("AfficherEventFXML.fxml"));
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("affichage");
+            primaryStage.setTitle("Liste des Evenements Reservés");
             primaryStage.show();
         
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
       
-
     }
 
     /**

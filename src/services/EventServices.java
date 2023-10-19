@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -39,9 +41,9 @@ public class EventServices {
             ps.setString(2, E.getNomCoach());
             ps.setString(3, E.getTypeEvent());
             ps.setString(4, E.getAdresseEvent());
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-             String date = sdf.format(E.getDateEvent());
-             ps.setString(5,date);
+           
+            LocalDate date = E.getDateEvent();
+        ps.setObject(5, java.sql.Date.valueOf(date));
             ps.setDouble(6, E.getPrixEvent());
             ps.setString(7,E.getImgEvent());
             
@@ -70,7 +72,10 @@ public class EventServices {
                 E.setTypeEvent(rs.getString("typeEvent"));
                 E.setAdresseEvent(rs.getString("adresseEvent"));
                 E.setPrixEvent(rs.getDouble("prixEvent"));
-                E.setDateEvent(rs.getDate("dateEvent"));
+                java.sql.Date sqlDate = rs.getDate("dateEvent");
+LocalDate localDate = sqlDate.toLocalDate();
+E.setDateEvent(localDate);
+                //E.setDateEvent(rs.getDate("dateEvent"));
                 E.setImgEvent(rs.getString("imgEvent"));
                 Events.add(E);
             }
@@ -83,21 +88,22 @@ public class EventServices {
          return Events;
     }
        public void modifierEvent(Event E) {
-          try {
-            String req = "UPDATE events SET titreEvent=?, nomCoach=?, typeEvent=?, adresseEvent=?, prixEvent=?, dateEvent=?,ImgEvent=? WHERE idEvent=?";
+    try {
+        String req = "UPDATE events SET titreEvent=?, nomCoach=?, typeEvent=?, adresseEvent=?, prixEvent=?, dateEvent=?, ImgEvent=? WHERE idEvent=?";
+        PreparedStatement ps = cnx.prepareStatement(req);
 
-            PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setString(1, E.getTitreEvent());
-            ps.setString(2, E.getNomCoach());
-            ps.setString(3, E.getTypeEvent());
-            ps.setString(4, E.getAdresseEvent());
-            ps.setDouble(5, E.getPrixEvent());
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-             String date = sdf.format(E.getDateEvent());
-             ps.setString(6,date);
-            ps.setString(7,E.getImgEvent());
+        ps.setString(1, E.getTitreEvent());
+        ps.setString(2, E.getNomCoach());
+        ps.setString(3, E.getTypeEvent());
+        ps.setString(4, E.getAdresseEvent());
+        ps.setDouble(5, E.getPrixEvent());
+        
+        // Assuming E.getDateEvent() returns a LocalDate
+        LocalDate date = E.getDateEvent();
+        ps.setObject(6, java.sql.Date.valueOf(date)); // Convert LocalDate to java.sql.Date
+        
+        ps.setString(7, E.getImgEvent());
         ps.setInt(8, E.getIdEvent());
-       
 
         int rowsUpdated = ps.executeUpdate();
         if (rowsUpdated > 0) {
@@ -109,6 +115,7 @@ public class EventServices {
         ex.printStackTrace();
     }
 }
+
      public void deleteEvent(Event E) {
    
     try {
@@ -128,28 +135,32 @@ public class EventServices {
         }
 }
 
-        public Event getEventById(int idEvent) {
-        Event event = null;
-        String req = "SELECT * FROM events WHERE idEvent = ?";
-        try {
-            PreparedStatement preparedStatement = cnx.prepareStatement(req);
-            preparedStatement.setInt(1, idEvent);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                event = new Event();
-                event.setIdEvent(resultSet.getInt("idEvent"));
-                event.setTitreEvent(resultSet.getString("titreEvent"));
-                event.setNomCoach(resultSet.getString("nomCoach"));
-                event.setTypeEvent(resultSet.getString("typeEvent"));
-                event.setAdresseEvent(resultSet.getString("adresseEvent"));
-                event.setDateEvent(resultSet.getDate("dateEvent"));
-                event.setPrixEvent(resultSet.getDouble("prixEvent"));
-                event.setImgEvent(resultSet.getString("imgEvent"));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(EventServices.class.getName()).log(Level.SEVERE, null, ex);
+       public Event getEventById(int idEvent) {
+    Event event = null;
+    String req = "SELECT * FROM events WHERE idEvent = ?";
+    try {
+        PreparedStatement preparedStatement = cnx.prepareStatement(req);
+        preparedStatement.setInt(1, idEvent);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            event = new Event();
+            event.setIdEvent(resultSet.getInt("idEvent"));
+            event.setTitreEvent(resultSet.getString("titreEvent"));
+            event.setNomCoach(resultSet.getString("nomCoach"));
+            event.setTypeEvent(resultSet.getString("typeEvent"));
+            event.setAdresseEvent(resultSet.getString("adresseEvent"));
+
+            // Convert java.sql.Date to LocalDate
+            java.sql.Date sqlDate = resultSet.getDate("dateEvent");
+            LocalDate localDate = sqlDate.toLocalDate();
+            event.setDateEvent(localDate);
+
+            event.setPrixEvent(resultSet.getDouble("prixEvent"));
+            event.setImgEvent(resultSet.getString("imgEvent"));
         }
-        return event;
+    } catch (SQLException ex) {
+        Logger.getLogger(EventServices.class.getName()).log(Level.SEVERE, null, ex);
     }
- 
+    return event;
+}
 }

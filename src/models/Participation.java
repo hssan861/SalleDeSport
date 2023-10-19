@@ -5,6 +5,7 @@
  */
 package models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -15,31 +16,33 @@ public class Participation {
     
     //var
     private int idPart;
-    private int idUser;
+    //private int idUser;
     private Event event;
-    private Date datePart;
+    private LocalDate datePart;
+    private String Nom,Prenom,Ntel;
 
     public Participation() {
     }
 
-    public Participation(int idUser, Date datePart) {
-        this.idUser = idUser;
-        this.datePart = datePart;
-    }
-
-  
-    public Participation(int idUser,Event event, Date datePart) {
-        this.idUser = idUser;
-        this.event = event;
-        this.datePart = datePart;
-    }
-
-    public Participation(int idPart, int idUser, Event event, Date datePart) {
+    public Participation(int idPart, Event event, LocalDate datePart, String Nom, String Prenom, String Ntel) {
         this.idPart = idPart;
-        this.idUser = idUser;
         this.event = event;
         this.datePart = datePart;
+        this.Nom = Nom;
+        this.Prenom = Prenom;
+        this.Ntel = Ntel;
     }
+
+   
+    public Participation(Event event, LocalDate datePart, String Nom, String Prenom, String Ntel) {
+        this.event = event;
+        this.datePart = datePart;
+        this.Nom = Nom;
+        this.Prenom = Prenom;
+        this.Ntel = Ntel;
+    }
+
+   
 
     public int getIdPart() {
         return idPart;
@@ -49,13 +52,7 @@ public class Participation {
         this.idPart = idPart;
     }
 
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
+    
 
     public Event getEvent() {
         return event;
@@ -65,19 +62,46 @@ public class Participation {
         this.event = event;
     }
 
-    public Date getDatePart() {
+    public LocalDate getDatePart() {
         return datePart;
     }
 
-    public void setDatePart(Date datePart) {
+    public void setDatePart(LocalDate datePart) {
         this.datePart = datePart;
+    }
+
+    public String getNom() {
+        return Nom;
+    }
+
+    public void setNom(String Nom) {
+        this.Nom = Nom;
+    }
+
+    public String getPrenom() {
+        return Prenom;
+    }
+
+    public void setPrenom(String Prenom) {
+        this.Prenom = Prenom;
+    }
+
+    public String getNtel() {
+        return Ntel;
+    }
+
+    public void setNtel(String Ntel) {
+        this.Ntel = Ntel;
     }
 
     @Override
     public String toString() {
-        return "Participation{" + "idPart=" + idPart + ", idUser=" + idUser + ", Event=" + event + ", datePart=" + datePart + '}';
+        return "Participation{" + "event=" + event + ", datePart=" + datePart + ", Nom=" + Nom + ", Prenom=" + Prenom + ", Ntel=" + Ntel + '}';
     }
-    
-    
-    
+
+    public void setIdEvent(Event event) {
+    }
+
+   
+   
 }

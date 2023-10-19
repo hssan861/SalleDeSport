@@ -14,6 +14,7 @@ import models.Event;
 import services.EventServices;
 import services.ParticipationServices;
 import java.text.ParseException;
+import java.time.LocalDate;
 import models.Participation;
 
 /**
@@ -31,7 +32,7 @@ public class SalleDeSport_event {
        //ajout d'un event
        EventServices ps = new EventServices();
        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-       Date dateEvent = dateFormat.parse("2024-06-18");
+    //   LocalDate dateEvent = dateFormat.parse("2024-06-18");
        /*Event Eventnew = new Event ("match","mazen","defis","boumhal",dateEvent,30,"image");
        
        ps.ajouterEvent(Eventnew);
@@ -39,7 +40,7 @@ public class SalleDeSport_event {
          //afficher event
         System.out.println(ps.afficherEvent());
         //ajout d'un participant
-        Event e = new Event(27,"match","mazen","defis","boumhal",dateEvent,30,"image");
+      //  Event e = new Event(27,"match","mazen","defis","boumhal",dateEvent,30,"image");
         ParticipationServices pat = new ParticipationServices();
        /* SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
        Date datePart = s.parse("2024-02-19");
