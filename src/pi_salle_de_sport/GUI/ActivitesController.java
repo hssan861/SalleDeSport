@@ -20,10 +20,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import pi_salle_de_sport.Entities.Activities;
 import pi_salle_de_sport.Entities.Categorie;
 import pi_salle_de_sport.Entities.User;
@@ -32,6 +38,10 @@ import pi_salle_de_sport.Services.UserService;
 
 public class ActivitesController {
 
+    
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
     @FXML
     private ResourceBundle resources;
 
@@ -50,6 +60,9 @@ public class ActivitesController {
     @FXML
     private DatePicker endDatePicker;
 
+    
+    @FXML
+    private Button goAfficher;
     @FXML
     private TextField salleField;
 
@@ -122,5 +135,23 @@ private void showAlert(String title, String content) {
 private Date convertToDate(LocalDate localDate) {
     return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 }
+
+
+    @FXML
+    void GoAfficher(ActionEvent event) {
+ try {
+
+            Parent root = FXMLLoader.load(getClass().getResource("listeactitvitiesFXML.fxml"));
+            // Parent root = FXMLLoader.load(getClass().getResource("Scene1.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+    }
+
 }
 

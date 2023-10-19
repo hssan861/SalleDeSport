@@ -32,9 +32,22 @@ public class Activities {
         this.salle = salle;
     }
 
-    public Activities() {
-
+    public Activities(int code, String titre, Date date_deb, Date date_fin, User coach, Categorie categorie, String description, String salle) {
+        this.code = code;
+        this.titre = titre;
+        this.date_deb = date_deb;
+        this.date_fin = date_fin;
+        this.coach = coach;
+        this.categorie = categorie;
+        this.description = description;
+        this.salle = salle;
     }
+
+    public Activities() {
+    }
+    
+    
+
 
     // Getters et Setters pour chaque attribut
     public int getCode() {
@@ -104,8 +117,11 @@ public class Activities {
 
     @Override
     public String toString() {
-        return "Activities{" + "code=" + code + ", titre=" + titre + ", date_deb=" + date_deb + ", date_fin=" + date_fin + ", coach=" + coach + ", categorie=" + categorie + ", description=" + description + ", salle=" + salle + '}';
+        return  titre ;
     }
+
+   
+
 
    
 

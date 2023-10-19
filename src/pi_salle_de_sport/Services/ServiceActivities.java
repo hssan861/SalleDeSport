@@ -74,10 +74,16 @@ public void addReservation(Activities t) {
                 a.setDateDeb(rs.getDate("date_deb"));
                 a.setDateFin(rs.getDate("date_fin"));
                 a.setDescription(rs.getString("description"));
+                
+                
+                
                 int userId = rs.getInt("id_user");
                 UserService userService = new UserService();
                 User user = userService.getUserById(userId);
                 a.setIdCoach(user);
+                
+                
+                
                 a.setSalle(rs.getString("salle"));
                 a.setTitre(rs.getString("titre"));
                 activitiesList.add(a);
@@ -87,10 +93,34 @@ public void addReservation(Activities t) {
         }
         return activitiesList;
     }
+//   @Override
+//public List<Activities> afficher() {
+//    List<Activities> activitiesList = new ArrayList<>();
+//    String req = "SELECT * FROM `activites`";
+//    try {
+//        Statement st = cnx.createStatement();
+//        ResultSet rs = st.executeQuery(req);
+//        while (rs.next()) {
+//            Activities a = new Activities();
+//            a.setCode(rs.getInt("code"));
+//            a.setCategorie(rs.getString("categorie"));
+//            a.setDateDeb(rs.getDate("date_deb"));
+//            a.setDateFin(rs.getDate("date_fin"));
+//            a.setDescription(rs.getString("description"));
+//            a.setIdCoach(rs.getInt("id_coach"));
+//            a.setSalle(rs.getString("salle"));
+//            a.setTitre(rs.getString("titre"));
+//            activitiesList.add(a);
+//        }
+//    } catch (SQLException ex) {
+//        Logger.getLogger(IService.class.getName()).log(Level.SEVERE, null, ex);
+//    }
+//    return activitiesList;
+//}
 
     
 
-    @Override
+  @Override
 public Boolean modifier(Activities t) {
     int userId = t.getIdCoach().getId_user();
 
@@ -152,6 +182,32 @@ String req = "DELETE FROM activites WHERE code=" + r.getCode();
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+    }
+   
+   
+   
+   
+   
+    public Activities getActivitiesById(int code) {
+        Activities Activities = null;
+        String req = "SELECT * FROM `activites` WHERE `code` = ?";
+        try {
+            PreparedStatement preparedStatement = cnx.prepareStatement(req);
+            preparedStatement.setInt(1, code);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                Activities = new Activities();
+                Activities.setCode(resultSet.getInt("code"));
+                
+                  Activities.setTitre(resultSet.getString("titre"));
+                //user.setEmailUser(resultSet.getString("Email"));
+                //  user.setImg(resultSet.getString("Img"));
+                //user.setAgeUser(resultSet.getInt("Age"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return Activities;
     }
     }
 

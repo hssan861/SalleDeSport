@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pi_salle_de_sport.GUI.SupprimerActiviteFXMLController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="aa" layoutX="165.0" layoutY="187.0" mnemonicParsing="false" onAction="#confirmersupp" prefHeight="26.0" prefWidth="94.0" text="confirmer" />
+            <Button layoutX="309.0" layoutY="188.0" mnemonicParsing="false" onAction="#annulersupp" prefHeight="26.0" prefWidth="94.0" text="annuler" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

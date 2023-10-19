@@ -30,13 +30,31 @@ public class Pi_salle_de_sport {
     
     
     public static void main(String[] args) throws ParseException {
+        
+        
+        
+        
+        
+    }}
+        
+        
+        
+        
+      
+        
+        
+    
+    
     //AJOUTER UNE RESERVATION
 // Convertir la chaîne de caractères en objet de type Date
 // SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //Date date_res = dateFormat.parse("2023-09-30 20:30:00");
+//Date date_deb = dateFormat.parse("2023-09-30 15:30:00");
+//Date date_fin = dateFormat.parse("2023-09-02 15:30:00");
 //// Créer une instance de la classe Reservation avec la date de réservation convertie
-//User u = new User(1,"hosni", "hannibal");
-//Reservation R = new Reservation(date_res,u, 98);
+//User u = new User(2,"hosni", "hannibal");
+//Activities act = new Activities(106,"bet", date_deb, date_fin, u, Categorie.Force, "aa", "morneg");
+//Reservation R = new Reservation(date_res,u, act);
 //ServiceReservation r= new ServiceReservation();
 //r.addReservation(R);}}
  
@@ -47,7 +65,7 @@ public class Pi_salle_de_sport {
 
 
         
-////        AJOUTER UNE ACTIVITES
+//        AJOUTER UNE ACTIVITES
 //     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //Date date_deb = dateFormat.parse("2023-09-30 15:30:00");
 //Date date_fin = dateFormat.parse("2023-09-02 15:30:00");
@@ -161,9 +179,9 @@ public class Pi_salle_de_sport {
        
        
        
-//              
-//       // AFFICHER UNE RESERVATION
-//           //Créez une instance de votre service (assumons que c'est votreService)
+              
+//      //  AFFICHER UNE RESERVATION
+//       //    Créez une instance de votre service (assumons que c'est votreService)
 //     ServiceReservation r= new ServiceReservation();
 //
 //        // Appel à la méthode afficher() pour récupérer les réservations
@@ -177,7 +195,7 @@ public class Pi_salle_de_sport {
 //            System.out.println("Code : " + reservation.getCode());
 //            System.out.println("-----------------------------");
 //        }}}
-//
+
 
 
 
@@ -218,23 +236,24 @@ public class Pi_salle_de_sport {
         
        // MODIFIER UNE RESERVATION
        
-       /*ServiceReservation ps = new ServiceReservation();
-          //Créez une instance de Reservation avec les valeurs appropriées
-        Reservation reservationAModifier = new Reservation();
-        reservationAModifier.setId(20);  // Remplacez par l'ID de la réservation que vous souhaitez modifier
-        reservationAModifier.setCode(80);  // Remplacez par le nouveau code
-        reservationAModifier.setIdUser(88);  // Remplacez par le nouvel ID utilisateur
-
-        // Appelez la méthode modifier() pour mettre à jour la réservation
-        Boolean modificationReussie = ps.modifier(reservationAModifier);
-
-        // Vérifiez si la modification a réussi
-        if (modificationReussie) {
-            System.out.println("La réservation a été modifiée avec succès.");
-        } else {
-            System.out.println("Échec de la modification de la réservation.");
-        }}}*/
-        
+//       ServiceReservation ps = new ServiceReservation();
+//       User u = new User(1,"kjlnlbli", "hoslknnjnni");
+//          //Créez une instance de Reservation avec les valeurs appropriées
+//        Reservation reservationAModifier = new Reservation();
+//        reservationAModifier.setId(20);  // Remplacez par l'ID de la réservation que vous souhaitez modifier
+//        reservationAModifier.setCode(99);  // Remplacez par le nouveau code
+//        reservationAModifier.setIdUser(88);  // Remplacez par le nouvel ID utilisateur
+//
+//        // Appelez la méthode modifier() pour mettre à jour la réservation
+//        Boolean modificationReussie = ps.modifier(reservationAModifier);
+//
+//        // Vérifiez si la modification a réussi
+//        if (modificationReussie) {
+//            System.out.println("La réservation a été modifiée avec succès.");
+//        } else {
+//            System.out.println("Échec de la modification de la réservation.");
+//        }}}
+       
         
  
 
@@ -257,8 +276,8 @@ public class Pi_salle_de_sport {
 //            System.out.println("La réservation a été supprimée avec succès.");
 //        } else {
 //            System.out.println("Échec de la suppression de la réservation.");
-//        }
-   }}
+//       }
+   
     
     
     
