@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="558.0" prefWidth="552.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CategorieController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="548.0" prefWidth="547.0">
+         <children>
+            <Label layoutX="10.0" layoutY="9.0" prefHeight="60.0" prefWidth="501.0" style="-fx-background-color: white;" text="           Categorie Management System" textFill="#172c90">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="56.0" layoutY="92.0" prefHeight="38.0" prefWidth="101.0" text="Nom" />
+            <Label layoutX="40.0" layoutY="174.0" prefHeight="38.0" prefWidth="101.0" text="Description" />
+            <TextField fx:id="enom" layoutX="157.0" layoutY="92.0" prefHeight="38.0" prefWidth="334.0" />
+            <Button layoutX="216.0" layoutY="288.0" mnemonicParsing="false" onAction="#register" prefHeight="38.0" prefWidth="101.0" text="Register" />
+            <Label fx:id="lavel" layoutX="107.0" layoutY="294.0" prefHeight="38.0" prefWidth="235.0" />
+            <Button layoutX="30.0" layoutY="344.0" mnemonicParsing="false" onAction="#deleteEmployee" prefHeight="38.0" prefWidth="120.0" text="Delete" />
+            <Button layoutX="204.0" layoutY="344.0" mnemonicParsing="false" onAction="#showAll" prefHeight="38.0" prefWidth="149.0" text="Show All" />
+            <TableView fx:id="table" layoutY="393.0" prefHeight="155.0" prefWidth="547.0">
+               <columns>
+                  <TableColumn fx:id="eid" prefWidth="26.0" text="ID" />
+                  <TableColumn fx:id="name" prefWidth="73.0" text="NOM" />
+                  <TableColumn fx:id="description" prefWidth="430.0" text="Description" />
+               </columns>
+            </TableView>
+            <Button layoutX="392.0" layoutY="344.0" mnemonicParsing="false" onAction="#update" prefHeight="38.0" prefWidth="126.0" text="Update" />
+            <TextArea layoutX="161.0" layoutY="145.0" prefHeight="135.0" prefWidth="334.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

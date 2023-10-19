@@ -5,6 +5,7 @@
  */
 package service;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,18 +26,34 @@ import util.MyConnection;
 public class CategorieService {
     
      //var
-    MyConnection Mycnx = MyConnection.getInstance();
-    Connection cnx = Mycnx.getCnx();
+   private MyConnection myConnection = MyConnection.getInstance();
+    private Connection connection = myConnection.getCnx();
     
     
-    public void ajouterCategorie (Categorie C){
+     public boolean CategorieExists(int CategorieId) {
+    String req = "SELECT COUNT(*) FROM Categorie WHERE IdCategorie = ?";
+    try {
+        PreparedStatement preparedStatement = connection.prepareStatement(req);
+        preparedStatement.setInt(1, CategorieId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            int count = resultSet.getInt(1);
+            return count >0;
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(CategorieService.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return false;
+}
+    
+    public void ajouterCategorie (Categorie categorie){
         String req = "INSERT INTO `categorie`( `NomCategorie`, `DescriptionCategorie`) VALUES (?,?)";
         try {
-            PreparedStatement ps = cnx.prepareStatement(req);
+            PreparedStatement preparedStatement = connection.prepareStatement(req);
             
-            ps.setString(1, C.getNomCategorie());
-            ps.setString(2, C.getDescriptionCategorie());
-            ps.executeUpdate();
+          preparedStatement.setString(1, categorie.getNomCategorie());
+           preparedStatement.setString(2, categorie.getDescriptionCategorie());
+            preparedStatement.executeUpdate();
             System.out.println("categorie ajoutée avec succes!");
         } catch (SQLException ex) {
             Logger.getLogger(CategorieService.class.getName()).log(Level.SEVERE, null, ex);
@@ -45,21 +62,19 @@ public class CategorieService {
     
      //Fetch
     public List<Categorie> afficherCategorie(){
-        List<Categorie> categorie = new ArrayList<>();
+        List<Categorie> categories = new ArrayList<>();
          //1
          String req = "SELECT * FROM `categorie` ";
         try {
-            //2
-            Statement st = cnx.createStatement();
-            //3
-            ResultSet rs = st.executeQuery(req);
-            while (rs.next()) {
-                Categorie CA = new Categorie();
-                CA.setIdCategorie(rs.getInt(1));//(rs.getInt("id"));
-                CA.setNomCategorie(rs.getString("NomCategorie"));
-                CA.setDescriptionCategorie(rs.getString(3));
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(req);
+            while (resultSet.next()) {
+                Categorie categorie = new Categorie();
+                categorie.setIdCategorie(resultSet.getInt(1));//(rs.getInt("id"));
+               categorie.setNomCategorie(resultSet.getString("NomCategorie"));
+             categorie.setDescriptionCategorie(resultSet.getString(3));
                
-                categorie.add(CA);
+                categories.add(categorie);
             }
                   
             
@@ -67,42 +82,84 @@ public class CategorieService {
         catch (SQLException ex) {
             Logger.getLogger(CategorieService.class.getName()).log(Level.SEVERE, null, ex);
         }
-             return categorie;
+             return categories;
         }
  
-    public void supprimer(Categorie c) {
-                try {
-            String req = "DELETE FROM `categorie` WHERE ID=?";
-             PreparedStatement st = cnx.prepareStatement(req);
-              st.setInt(1,c.getIdCategorie());
-            st.executeUpdate();
-            System.out.println("categorie supprimer avec succés");
-        }
-                catch (SQLException ex) {
-            System.out.println(ex);
-        }
+    
+    
+       public List<Categorie> getCategoryListFromService() {
+        // Call the afficherCategorie method to retrieve categories
+        return afficherCategorie();
     }
-    public void modifier( Categorie c)
-    {
+       
+       
+    public void supprimerCategorie(Categorie categorie) {
+               
+            String req = "DELETE FROM `categorie` WHERE IdCategorie=?";
+               try {
+            PreparedStatement preparedStatement = connection.prepareStatement(req);
+             preparedStatement.setInt(1,categorie.getIdCategorie());
           
-      try {
-            String req ="UPDATE `categorie` SET `NomCategorie`=?,`DescriptionCategorie`=? WHERE ID=?";
-            PreparedStatement st = cnx.prepareStatement(req);
+             int rowsDeleted = preparedStatement.executeUpdate();
+        if (rowsDeleted > 0) {
+            System.out.println("categorie supprimer avec succée!");
+        } else {
+            System.out.println(" Aucune categorie avec cette IDc categorie supprimer avec succée ");
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(CategorieService.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        }
+                
+    
+    public void modifierCategorie(Categorie categorie) {
+    
+          
+     
+            String req ="UPDATE `categorie` SET `NomCategorie`=?,`DescriptionCategorie`=? WHERE IdCategorie=?";
+             try {
+                 PreparedStatement preparedStatement = connection.prepareStatement(req);
+             
             
-            st.setString(1, c.getNomCategorie());
-            st.setString(2, c.getDescriptionCategorie());
-            st.setInt(3,c.getIdCategorie());                      
-            st.executeUpdate();
-            System.out.println("Categorie Modifié avec succés");
+            preparedStatement.setString(1, categorie.getNomCategorie());
+            preparedStatement.setString(2, categorie.getDescriptionCategorie());
+            preparedStatement.setInt(3,categorie.getIdCategorie());                      
+            
+           
+            int rowsUpdated = preparedStatement.executeUpdate();
+
+        if (rowsUpdated > 0) {
+            System.out.println("Categorie modifier avec succée!");
+        } else {
+            System.out.println("Aucune categorie avec cette ID");
+        }
         }
          catch (SQLException ex) {
-            System.out.println(ex);
+              Logger.getLogger(CategorieService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void supprimer(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        public Categorie getCategorieById(int IdCategorie) {
+        Categorie categorie = null;
+        String req = "SELECT * FROM `categorie` WHERE `IdCategorie` = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setInt(1, IdCategorie);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                categorie = new Categorie();
+                categorie.setIdCategorie(resultSet.getInt("IdCategorie"));
+                categorie.setNomCategorie(resultSet.getString("NomCategorie"));
+                categorie.setDescriptionCategorie(resultSet.getString("DescriptionCategorie"));
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CategorieService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return categorie;
     }
+    
 }
    
     

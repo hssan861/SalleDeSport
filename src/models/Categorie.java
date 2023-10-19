@@ -4,12 +4,17 @@
  * and open the template in the editor.
  */
 package models;
+import service.CategorieService;
 
 /**
  
  * @author Lenovo
  */
-public class Categorie {
+public class Categorie extends CategorieService {
+
+    public static Categorie valueOf(String toUpperCase) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    private int IdCategorie;
    private String NomCategorie;
    private String DescriptionCategorie;

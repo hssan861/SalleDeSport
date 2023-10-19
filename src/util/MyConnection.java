@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  * @author rayen
  */
 public class MyConnection {
-    
+        
     //DB Credentials
     final String URL = "jdbc:mysql://localhost:3306/SalleDeSport";
     final String USR = "root";
@@ -42,8 +42,6 @@ public class MyConnection {
     public Connection getCnx() {
         return cnx;
     }
-    
-    
     
     
 }

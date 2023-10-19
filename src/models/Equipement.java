@@ -8,87 +8,68 @@ package models;
 
 
 
-import java.time.LocalDate;
-import java.util.Date;
+
+
 
 /**
  *
  * @author Lenovo
  */
 public class Equipement {
-  private int ID;
-  private String Nom;
+  private int IdEquipement;
+  private String NomEquipement;
   private int Quantite;
   private String DateAchat;
   private float PrixAchat;
-  private int IdCategorie; 
+  
+  private Categorie categorie; // Categorie cat;
+  
+  //public enum Categorie {
+   // cardio, Musculation ,Poids_libres_et_halteres,quipement_de_resistanc; // Ajoutez vos catégories ici
+//}
 
     public Equipement() {
     }
 
-    public Equipement( String Nom, int Quantite, String DateAchat, float PrixAchat, int IdCategorie) {
+    public Equipement( String NomEquipement, int Quantite, String DateAchat, float PrixAchat, Categorie categorie) {
      
-        this.Nom = Nom;
+        this.NomEquipement = NomEquipement;
         this.Quantite = Quantite;
         this.DateAchat = DateAchat;
         this.PrixAchat = PrixAchat;
-        this.IdCategorie = IdCategorie;
+       
+        this.categorie = categorie;
     }
 
   
     
 
-  /*  public Equipement(String Nom, int Quantite, Date DateAchat, float PrixAchat ) {
-        this.Nom = Nom;
+    public Equipement(int IdEquipement,String NomEquipement, int Quantite, String DateAchat, float PrixAchat,int IdCategorie,Categorie categorie ) {
+       this.IdEquipement=IdEquipement;
+       this.NomEquipement =NomEquipement;
         this.Quantite = Quantite;
         this.DateAchat = DateAchat;
         this.PrixAchat = PrixAchat;
+        
+        this.categorie= categorie;
        
-    } */
+    } 
 
-    /*public Equipement(String Nom, int Quantite, float PrixAchat, int IdCategorie) {
-        this.Nom = Nom;
-        this.Quantite = Quantite;
-        this.PrixAchat = PrixAchat;
-        this.IdCategorie = IdCategorie;
+    public int getIdEquipement() {
+        return IdEquipement;
     }
 
-    public Equipement(String Nom, int Quantite, Date DateAchat, float PrixAchat, int IdCategorie) {
-        this.Nom = Nom;
-        this.Quantite = Quantite;
-        this.DateAchat = DateAchat;
-        this.PrixAchat = PrixAchat;
-        this.IdCategorie = IdCategorie;
-    }
-    public Equipement(int ID, String Nom,int Quantite, Date DateAchat, float PrixAchat, Categorie CategorieEquipement, int IdCategorie) {
-        this.ID = ID;
-        this.Nom = Nom;
-        this.Quantite = Quantite;
-        this.DateAchat = DateAchat;
-        this.PrixAchat = PrixAchat;
-        this.IdCategorie =IdCategorie ;
+    public void setIdEquipement(int IdEquipement) {
+        this.IdEquipement = IdEquipement;
     }
 
-    public Equipement(String vélo_dexercice, int i, LocalDate dt, int i0, int i1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/
-
-    public int getID() {
-        return ID;
+    public String getNomEquipement() {
+        return NomEquipement;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setNomEquipement(String NomEquipement) {
+        this.NomEquipement = NomEquipement;
     }
-
-    public String getNom() {
-        return Nom;
-    }
-
-    public void setNom(String Nom) {
-        this.Nom = Nom;
-    }
-
 
     public int getQuantite() {
         return Quantite;
@@ -113,21 +94,27 @@ public class Equipement {
     public void setPrixAchat(float PrixAchat) {
         this.PrixAchat = PrixAchat;
     }
-
-   
-
-   
-
-    public int getIdCategorie() {
-        return IdCategorie;
-    }
-
-    public void setIdCategorie(int IdCategorie) {
-        this.IdCategorie = IdCategorie;
-    }
     
     
-  
+
+   
+    
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+    @Override
+    public String toString() {
+        return "Equipement{" + "IdEquipement=" + IdEquipement + ", NomEquipement=" + NomEquipement + ", Quantite=" + Quantite + ", DateAchat=" + DateAchat + ", PrixAchat=" + PrixAchat +  ", categorie=" + categorie + '}';
+    }
+
+    
+
           
 }
 

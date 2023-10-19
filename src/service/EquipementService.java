@@ -1,9 +1,11 @@
 /*
+
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package  service;
+
 
 
 
@@ -16,73 +18,86 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import models.Categorie;
 import models.Equipement;
 import util.MyConnection;
-import java.util.Date;
+import service.CategorieService;
+
 /**
  *
  * @author Lenovo
  */
-public class EquipementService {
+public class EquipementService  {
     
     //var
-    MyConnection Mycnx = MyConnection.getInstance();
-    Connection cnx = Mycnx.getCnx();
+     private MyConnection myConnection = MyConnection.getInstance();
+     private Connection connection = myConnection.getCnx();
+
     
     
     public void ajouterEquipement (Equipement E){
-        String req = "INSERT INTO `equipement`( `Nom`, `Quantite`, `DateAchat`, `PrixAchat`, `IdCategorie`) VALUES (?,?,?,?,?)";
+        // Check si la categorie  existe avant l insersion de equipement
+        int CategorieId = E.getCategorie().getIdCategorie();
+        CategorieService cas =new CategorieService();
+        if (cas.CategorieExists(CategorieId)) {
+        String req = "INSERT INTO `equipement`( `NomEquipement`, `Quantite`, `DateAchat`, `PrixAchat`, `IdCategorie`) VALUES (?,?,?,?,?)";
         try {
-            PreparedStatement ps = cnx.prepareStatement(req);
+             PreparedStatement preparedStatement = connection.prepareStatement(req);
            
-            ps.setString(1, E.getNom());
-            ps.setInt(2, E.getQuantite());
+        preparedStatement.setString(1, E.getNomEquipement());
+         preparedStatement.setInt(2, E.getQuantite());
            // ps.setDate(3, (java.sql.Date) E.getDateAchat());
-            ps.setString(3, E.getDateAchat());
-            ps.setFloat(4,  E.getPrixAchat());
-            ps.setInt(5, E.getIdCategorie());
-            ps.executeUpdate();
-            System.out.println("Equipement ajoutée avec succes!");
+          preparedStatement.setString(3, E.getDateAchat());
+           preparedStatement.setFloat(4,  E.getPrixAchat());
+          preparedStatement.setInt(5, CategorieId);
+          int rowsInserted = preparedStatement.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("Equipement ajoutée avec succès!");
+            } else {
+                System.out.println("ajout d equipement a échoué.");
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(EquipementService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    //Fetch
-    public List<Equipement> afficherEquipement(){
-        List<Equipement> equipement  = new ArrayList<>();
-         //1
-         String req = "SELECT * FROM `equipement` ";
-        try {
-            //2
-            Statement st = cnx.createStatement();
-            //3
-            ResultSet rs1 = st.executeQuery(req);
-            while (rs1.next()) {
-                Equipement E1 = new Equipement();
-                E1.setID(rs1.getInt(1));//(rs.getInt("id"));
-                E1.setNom(rs1.getString("Nom Equipement"));
-                E1.setQuantite(rs1.getInt(3));
-                E1.setDateAchat(rs1.getString(4));
-                E1.setPrixAchat(rs1.getFloat(5));
-                E1.setIdCategorie(rs1.getInt(6));
-               
-                equipement .add(E1);
-            }
-                  
+    }
+    
+     public List<Equipement> afficherEquipement() {
+    List<Equipement> equipements = new ArrayList<>();
+    String req = "SELECT * FROM `equipement`";
+    try {
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(req);
+        while (resultSet.next()) {
+            Equipement equipement = new Equipement();
+            equipement.setIdEquipement(resultSet.getInt("IdEquipement"));
+           equipement.setNomEquipement(resultSet.getString("NomEquipement"));
+         equipement.setQuantite(resultSet.getInt("Quantite"));
+          equipement.setDateAchat(resultSet.getString("DateAchat"));
+          equipement.setPrixAchat(resultSet.getFloat("PrixAchat"));
             
+            // Fetch the associated Categorie for the Equipement
+            int IdCategorie = resultSet.getInt("IdCategorie");
+            CategorieService categorieService = new CategorieService();
+            Categorie categorie = categorieService.getCategorieById(IdCategorie);
+            equipement.setCategorie(categorie);
+
+           equipements.add(  equipement);
         }
-        catch (SQLException ex) {
-            Logger.getLogger(EquipementService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-             return equipement;
-        }
-  
-     public void supprimer(Equipement e) {
+    } catch (SQLException ex) {
+        Logger.getLogger(EquipementService.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return equipements;
+}
+     public void supprimerEquipement(Equipement e) {
                 try {
-            String req = "DELETE FROM `equipement` WHERE ID=+id";
-            Statement stm = cnx.createStatement();
-            stm.executeUpdate(req);
+            String req = "DELETE FROM `equipement` WHERE IdEquipement=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setInt(1,e.getIdEquipement());
+           
+
+           preparedStatement.executeUpdate();
             System.out.println("Equipement supprimer avec succés");
              } catch (SQLException ex) {
             System.out.println(ex);
@@ -90,29 +105,39 @@ public class EquipementService {
     }
         
         
-        public void modifierEquipement(Equipement e) {
-          
-      try {
-            String req="UPDATE `equipement` SET `ID`='[value-1]',`Nom`='[value-2]',`Quantite`='[value-3]',`DateAchat`='[value-4]',`PrixAchat`='[value-5]',`IdCategorie`='[value-6]' WHERE 1";
-            PreparedStatement st = cnx.prepareStatement(req);
-            st.setInt(1, e.getID());
-            st.setString(2, e.getNom());
-            st.setInt(3, e.getQuantite());
-            st.setString(4,  e.getDateAchat());
-            st.setFloat(4, e.getPrixAchat());
-            st.setInt(5, e.getIdCategorie());
-         
-            st.executeUpdate();
-            System.out.println("Equipement Modifié avec succés");
+       public void modifierEquipement(Equipement e) {
+            // Check si la categorie  existe avant l insersion de equipement
+        int CategorieId = e.getCategorie().getIdCategorie();
+        CategorieService cas =new CategorieService();
+        if (cas.CategorieExists(CategorieId)) {
+    
+        String req = "UPDATE `equipement` SET `NomEquipement`=?, `Quantite`=?, `DateAchat`=?, `PrixAchat`=? WHERE `IdEquipement`=?";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(req);
+        
+            preparedStatement.setString(1, e.getNomEquipement());
+            preparedStatement.setInt(2, e.getQuantite());
+        preparedStatement.setString(3, e.getDateAchat());
+        preparedStatement.setFloat(4, e.getPrixAchat());
+       
+        preparedStatement.setInt(5, e.getIdEquipement());
+
+       int rowsUpdated = preparedStatement.executeUpdate();
+       if (rowsUpdated > 0) {
+            System.out.println("Equipement modifier avec succée!");
+        } else {
+            System.out.println("modification a echouée.");
         }
-         catch (SQLException ex) {
-            System.out.println(ex);
-        }
-    
-    
-    
-    
-    
+        
+    } catch (SQLException ex) {
+         Logger.getLogger(EquipementService.class.getName()).log(Level.SEVERE, null, ex);
+    }
+     } else {
+        System.out.println("pas de categorie avec cette ID.");
+    }
     
 }
+    
+    
+    
 }

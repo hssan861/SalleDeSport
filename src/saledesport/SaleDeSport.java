@@ -5,95 +5,88 @@
  */
 package saledesport;
 
-import java.time.LocalDate;
-import java.util.Date;
+
+
 import models.Categorie;
 import models.Equipement;
 import service.EquipementService;
 import service.CategorieService;
  
 
-public class SaleDeSport {
+//public class SaleDeSport {
 
     /**
      * @param args the command line arguments
      * 
      */
-    //public EquipementService Equipe;
-    public static void main(String[] args) {
-        // TODO code application logic here
-     /* Date d=new Date();
-        Equipement e =new Equipement("qlter",10,d,(float)5.2,1);
-        EquipementService es=new EquipementService ();
-        es.ajouterEquipement(e);
-        System.out.println(es.afficherEquipement());*/
-
-     //**Categorie c=new Categorie("NO","vg");
-    // Categorie CtoUpdate=new Categorie();
-    // CtoUpdate.setIdCategorie(1);
-     //CtoUpdate.setNomCategorie("said");
-    // CtoUpdate.setDescriptionCategorie("brahmi");
-    //Categorie CtoDelete=new Categorie();
-    //CtoDelete.setIdCategorie(1);
-    // CategorieService cs=new CategorieService();
-     //c.ajouterCategorie(c);
-    //c.modifier(CtoUpdate);
-    //cs.supprimer(CtoDelete);
-    // System.out.println(cs.afficherCategorie());
+   // public EquipementService Equipeùent;
+ //   public static void main(String[] args) {
+        
     
-    
-    //Date dateAchat1 = new Date(122, 4, 20);
-   // Date dt ;
+   
   
    
-   
-   CategorieService s = new CategorieService();
-   
-   // ajouter categoire
-    Categorie c=new Categorie("samir","said");
-    s.ajouterCategorie(c);
- 
- 
- // delete categoire
- Categorie det=new Categorie();
-    det.setIdCategorie(5);
-   s.supprimer(det);
-   
- // update categoire
- Categorie updateC = new Categorie();
- updateC.setIdCategorie(4);
- updateC.setNomCategorie("meher test");
- updateC.setDescriptionCategorie("teste le champ description");
- s.modifier(updateC);
- 
- //affichier data categoire
- s.afficherCategorie();
- 
- // private int ID;
- 
+//   
+ //  CategorieService cs = new CategorieService();
+  
+//  //ajouter categoire
+  // Categorie c=new Categorie("dg1522dg","ndjd1524dks");
+//    cs.ajouterCategorie(c);
+////////// 
+    
+// // supprimer categoire
+//    Categorie det=new Categorie();
+//    det.setIdCategorie(22);
+//    cs.supprimerCategorie(det);
+////   
+//// modifier categoire
+//   Categorie updateC = new Categorie();
+//   updateC.setIdCategorie(21);
+//   updateC.setNomCategorie("brahmihmi ");
+//   updateC.setDescriptionCategorie("teste le champ description");
+////   CategorieService p = new CategorieService();
+//     cs.modifierCategorie(updateC);
+////   
+////   
+////   
+////   
+////  //affichier data categoire
+////     
+//      System.out.println (cs.afficherCategorie());
 
-
-
-   
-       //ajouter  equipement
-        Equipement ep = new Equipement("Vélo d'exercice", 30, "12-12-2023", 700, 2);
-        EquipementService es = new EquipementService();
-        es.ajouterEquipement( ep);
-   
-       //supprimer
-       // Equipement e1=new Equipement();
-       // e1.setID(1);
-       // es.supprimer(e1);
-      //modifier equipement
-      Equipement e2=new Equipement();
-      e2.setID(1);
-      e2.setNom("Vélo d'exercice");
-      e2.setQuantite(30);
-      e2.setDateAchat("12-12-23");
-      e2.setPrixAchat(700);
-      e2.setIdCategorie(2);
-      es.modifierEquipement(e2);
-      //afficher equipement
-      es.afficherEquipement();
-}
- }
+//// 
+  //   EquipementService ES=new EquipementService ();
+//     
+//     
+//     
+////     //ajoueter equipement
+     // Categorie ca=new Categorie(1,"cardio","Se sont les activités physiques axées sur le renforcement du système cardiovasculaire. Cela inclut les exercices visant à améliorer la santé du cœur et des poumons,");
+//     Equipement Ep=new Equipement("sport",50,"12-5-2020",750,ca);
+//      ES.ajouterEquipement(Ep);
+//
+////////       supprimer
+//         Equipement e1=new Equipement();
+//         e1.setIdEquipement(28);
+//        
+//         ES.supprimerEquipement(e1);
+////         
+////         
+////////      //modifier equipement
+    //  Equipement e2=new Equipement();
+   // e2.setIdEquipement(27);
+    // e2.setNomEquipement("said brahmi");
+   //   e2.setQuantite(30);
+    // e2.setDateAchat("12-12-23");
+      //e2.setPrixAchat(700);
+    // e2.setCategorie(ca);
+//
+//      ES.modifierEquipement(e2);
+//      
+//      
+      
+////     //afficher equipement
+//        System.out.println (ES.afficherEquipement());
+//
+//
+//    }
+//}
