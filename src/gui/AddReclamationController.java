@@ -18,18 +18,20 @@ import models.Reclamation;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import models.Login;
 import models.Role;
 
 public class AddReclamationController implements Initializable {
     private EspaceClientController espaceClientController;
     private User currentUser;
-
+    User login;
     @FXML
     private TextArea descriptionTextArea;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Initialization code if needed
+        login=User.getInstance();
     }
 
 
@@ -39,9 +41,7 @@ public class AddReclamationController implements Initializable {
         try {
             // Handle user input and add the user to the database
             String Description = descriptionTextArea.getText();
-            User user = new User(53, "aziz", "souissi", "aziz12345", Role.Utilisateur, "aziz.souissi@esprit.tn", "aziz.jpg", 22);
-
-            Reclamation rec = new Reclamation(Description, user);
+            Reclamation rec = new Reclamation(Description,login);
             rs.ajouterReclamation(rec);
 
             // Clear input fields

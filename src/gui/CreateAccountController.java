@@ -6,6 +6,7 @@
 package gui;
 
 
+import java.io.File;
 import models.User;
 import services.UserService;
 import java.io.IOException;
@@ -32,10 +33,14 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import models.Role;
+import util.Utils;
 
-
+ 
 /**
  * FXML Controller class
  *
@@ -61,6 +66,7 @@ public class CreateAccountController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
     
     @FXML 
@@ -77,17 +83,17 @@ public class CreateAccountController implements Initializable {
             Alert a = new Alert(Alert.AlertType.ERROR, "Aucun champ vide n'est accepté", ButtonType.OK);
             a.showAndWait();
         } else if (!Validateemail()) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Email  invalide!", ButtonType.OK);
-            a.showAndWait();
+           // Alert a = new Alert(Alert.AlertType.ERROR, "Email  invalide!", ButtonType.OK);
+           // a.showAndWait();
         
         }
         else if (!Validatemotdepasse()) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Mot de passe  invalide!", ButtonType.OK);
-            a.showAndWait();   
+           // Alert a = new Alert(Alert.AlertType.ERROR, "Le mot de passe doit être au minimum 8 caractéres!", ButtonType.OK);
+            //a.showAndWait();
         }
         else {
              UserService su = new  UserService();
-            User u = new User(nomField.getText(),prenomField.getText(),passwordField.getText(),Role.Utilisateur,emailField.getText(),imageField.getText(), Integer.parseInt(ageField.getText()) ) {} ;
+            User u = new User(nomField.getText(),prenomField.getText(),Utils.encryptString(passwordField.getText()) ,Role.Utilisateur,emailField.getText(),imageField.getText(), Integer.parseInt(ageField.getText()) ) {} ;
             su.ajouterUser(u);
             List<User> all = su.getAll();
             nomField.clear();
@@ -112,6 +118,23 @@ public class CreateAccountController implements Initializable {
   
    
     /*********************************************CONTROLE DE SAISIE***************************************************************************/    
+     
+@FXML
+public void ChosePhoto(ActionEvent event) {
+    Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Open Resource File");
+
+    // Show the file dialog to select an image file
+    File selectedFile = fileChooser.showOpenDialog(appStage);
+
+    if (selectedFile != null) {
+        // Set the file path to the imageField TextField
+        imageField.setText(selectedFile.toURI().toString());
+    }
+}
+
+     
 private boolean Validateemail() {
     Pattern p = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
     Matcher m = p.matcher(emailField.getText());
@@ -139,7 +162,7 @@ private boolean Validateemail() {
             passwordField.setEffect(null);
             return true;
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Mot de passe invalide", ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Le mot de passe doit être au minimum 8 caractéres!", ButtonType.OK);
             a.showAndWait();
             return false;
         }

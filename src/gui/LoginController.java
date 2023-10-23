@@ -27,13 +27,17 @@ import java.io.InputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Hyperlink;
 import models.Login;
 import models.Role;
+import util.Utils;
 
 public class LoginController implements Initializable {
         private EspaceClientController espaceClientController;
-
+    
     private AddReclamationController addReclamationController;
     private User currentUser;
     private Stage stage;
@@ -53,12 +57,15 @@ public class LoginController implements Initializable {
     @FXML
     private CheckBox rememberCheckbox; // Replace the RadioButton with a CheckBox
 
-    private final String path = "/data/LoginData.ini";
+
+@FXML
+    private Hyperlink mdpOublieHyperlink;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         UserService userService = new UserService();
-        loadEmailAndPassword(); // Load email and password if saved
+  //      loadEmailAndPassword(); // Load email and password if saved
     }
     
     
@@ -73,15 +80,15 @@ public class LoginController implements Initializable {
 
     @FXML
     private void login(ActionEvent event) throws IOException {
-        Login Log_in = Login.getInstance();
+        User Log_in = User.getInstance();
         UserService su = new UserService();
 
         String userEmail = username.getText();
-        String userPassword = password.getText();
+        String userPassword = Utils.encryptString(password.getText());
 
         if (userEmail.isEmpty()) {
             showAlert("Email ne doit pas être vide!");
-        } else if (!isValidEmail(userEmail)) {
+        } else if (!Utils.isValidEmail(userEmail)) {
             showAlert("Email invalide!");
         } else if (userPassword.isEmpty()) {
             showAlert("Mot de passe ne doit not be empty!");
@@ -98,8 +105,8 @@ public class LoginController implements Initializable {
                     Log_in.setId(u.getId());
                     Log_in.setNom(u.getNom());
                     Log_in.setPrenom(u.getPrenom());
-                    Log_in.setUsername(u.getEmail());
-                    Log_in.setPassword(u.getMdp());
+                    Log_in.setEmail(u.getEmail());
+                    Log_in.setMdp(u.getMdp());
                     Log_in.setRole(u.getRole());
                     Alert a = new Alert(Alert.AlertType.INFORMATION, "Authentifié avec Succès!", ButtonType.OK);
                     a.showAndWait();
@@ -117,9 +124,9 @@ public class LoginController implements Initializable {
                     // Show the UserInterface stage
                     userInterfaceStage.show();
 
-                    if (rememberCheckbox.isSelected()) {
+                    /*if (rememberCheckbox.isSelected()) {
                         saveEmailAndPassword();
-                    }
+                    }*/
                 } else {
                     showAlert("Les données sont invalides!");
                 }
@@ -134,8 +141,8 @@ public class LoginController implements Initializable {
                     Log_in.setId(u.getId());
                     Log_in.setNom(u.getNom());
                     Log_in.setPrenom(u.getPrenom());
-                    Log_in.setUsername(u.getEmail());
-                    Log_in.setPassword(u.getMdp());
+                    Log_in.setEmail(u.getEmail());
+                    Log_in.setMdp(u.getMdp());
                     Log_in.setRole(u.getRole());
                     Alert a = new Alert(Alert.AlertType.INFORMATION, "Authentifié avec Succès!", ButtonType.OK);
                     a.showAndWait();
@@ -152,9 +159,9 @@ public class LoginController implements Initializable {
                     espaceClientStage.show();
                     
 
-                    if (rememberCheckbox.isSelected()) {
+                    /*if (rememberCheckbox.isSelected()) {
                         saveEmailAndPassword();
-                    }
+                    }*/
                 } else {
                     showAlert("Les données sont invalides!");
                 }
@@ -172,41 +179,14 @@ public class LoginController implements Initializable {
         alert.showAndWait();
     }
 
-    private boolean isValidEmail(String email) {
-        Pattern p = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-        Matcher m = p.matcher(email);
-        return m.find() && m.group().equals(email);
-    }
+    
 
     private boolean isValidPassword(String password) {
         return password.length() >= 8;
     }
 
-    private void saveEmailAndPassword() {
-        String email = username.getText();
-        String pass = password.getText();
-        Properties properties = new Properties();
-        properties.setProperty("email", email);
-        properties.setProperty("password", pass);
 
-        try (OutputStream output = new FileOutputStream(path)) {
-            properties.store(output, null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void loadEmailAndPassword() {
-        Properties properties = new Properties();
-        try (InputStream input = new FileInputStream(path)) {
-            properties.load(input);
-            username.setText(properties.getProperty("email", ""));
-            password.setText(properties.getProperty("password", ""));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+    
     @FXML
     private void reset(ActionEvent event) {
         password.clear();
@@ -228,4 +208,26 @@ public class LoginController implements Initializable {
         createAccountStage.setScene(createAccountScene);
         createAccountStage.show();
     }
+    
+    @FXML
+    private void mdpOublie(ActionEvent event){
+         Stage resetPasswordStage = new Stage();
+                    Parent resetPasswordInterface;
+            try {
+                resetPasswordInterface = FXMLLoader.load(getClass().getResource("ResetPassword.fxml"));
+                Scene resetPasswordScene = new Scene(resetPasswordInterface);
+                    resetPasswordStage.setScene(resetPasswordScene);
+                    Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    currentStage.close();
+
+                    // Show the UserInterface stage
+                    resetPasswordStage.show();
+                    
+            } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    
+    }
 }
+
+

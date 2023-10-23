@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import javafx.scene.control.Button;
+import util.Utils;
 
 public class AddUserController {
     @FXML
@@ -54,12 +55,12 @@ public class AddUserController {
             // Handle user input and add the user to the database
             String nom = nomField.getText();
             String prenom = prenomField.getText();
-            String password = passwordField.getText();
+            String password =Utils.encryptString(passwordField.getText());
             Role role = roleComboBox.getValue();
             String email = emailField.getText();
             String image = imageField.getText();
             int age = Integer.parseInt(ageField.getText());
-
+           
             User user = new User(nom, prenom, password, role, email, image, age);
             userService.ajouterUser(user);
 

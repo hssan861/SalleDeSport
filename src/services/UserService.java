@@ -38,6 +38,21 @@ public class UserService {
         }
         return false;
     }
+    public boolean UserExists(String email) {
+        String query = "SELECT COUNT(*) FROM user WHERE Email = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                return count > 0;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
     public void ajouterUser(User user) {
         String query = "INSERT INTO user(`Nom`, `Prenom`, `Mdp`, `Role`, `Email`, `Img`, `Age`) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -81,6 +96,22 @@ public class UserService {
         return users;
     }
 
+    public  void changePasswordById(int userId,String newPassword){
+        String query = "UPDATE `user` SET `Mdp`=? WHERE `Id`=? ";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, newPassword);
+            preparedStatement.setInt(2, userId);
+               int rowsUpdated = preparedStatement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("User updated successfully!");
+            } else {
+                System.out.println("No user found with the given ID.");
+            }
+        }catch(SQLException ex){
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public void modifierUser(User user) {
         String query = "UPDATE `user` SET `Nom`=?, `Prenom`=?, `Mdp`=?,`Role`=?, `Email`=?, `Img`=?, `Age`=? WHERE `Id`=?";
         try {
@@ -145,7 +176,7 @@ public class UserService {
         }
         return user;
     }
-
+    
     public int getIdByEmail(String email) {
         int userId = -1; // Default value indicating no user found with the provided email
 

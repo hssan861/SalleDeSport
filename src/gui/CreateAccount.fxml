@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -61,6 +62,8 @@
                                 </Label>
                             </children>
                         </VBox>
+                  <ButtonBar layoutX="467.0" layoutY="143.0" prefHeight="37.0" prefWidth="151.0" />
+                <Button layoutX="467.0" layoutY="195.0" mnemonicParsing="false" onAction="#ChosePhoto" text="Choisir une photo " />
                     </children>
                 </AnchorPane>
                 <Label layoutX="215.0" layoutY="49.0" styleClass="txt" text="Créer un compte" textFill="#121211">

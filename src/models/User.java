@@ -9,7 +9,13 @@ public class User {
     private String email;
     private String img;
     private int age;
-
+    private static User instance;
+      public static User getInstance() {
+        if (instance == null) {
+            instance = new User();
+        }
+        return instance;
+    }
     public User() {
     }
 
@@ -45,7 +51,7 @@ public class User {
 
     
 
-    public Role getRole() {
+    public  Role getRole() {
         return role;
     }
 
