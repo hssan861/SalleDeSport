@@ -10,6 +10,10 @@ package pi_salle_de_sport.GUI;
  * @author HP
  */
 
+import api.JavaMailUtil;
+import com.sun.rowset.internal.Row;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -29,7 +33,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.mail.MessagingException;
 import pi_salle_de_sport.Entities.Activities;
 import pi_salle_de_sport.Entities.Categorie;
 import pi_salle_de_sport.Entities.User;
@@ -64,6 +70,8 @@ public class ActivitesController {
     @FXML
     private Button goAfficher;
     @FXML
+    private Button excel;
+    @FXML
     private TextField salleField;
 
     @FXML
@@ -93,7 +101,7 @@ public class ActivitesController {
     
     
     @FXML
-private void ajouter(ActionEvent event) {
+private void ajouter(ActionEvent event) throws MessagingException {
     // Retrieve input values
     String titre = titleField.getText();
     String description = descriptionField.getText();
@@ -102,6 +110,8 @@ private void ajouter(ActionEvent event) {
     String salle = salleField.getText();
  User coach = (User) coachComboBox.getValue();  // Assuming User is the type for coach
     Categorie categorie = (Categorie) categoryComboBox.getValue();
+    System.out.println(coach.getEmail());
+    JavaMailUtil.sendMail(coach.getEmail());
     // Perform validation
     if (titre.isEmpty() || description.isEmpty() || dateDeb == null || dateFin == null || salle.isEmpty()) {
         showAlert("Erreur", "Veuillez remplir tous les champs.");
@@ -152,6 +162,19 @@ private Date convertToDate(LocalDate localDate) {
             System.out.println(e);
         }
     }
+
+   @FXML
+public void clear() {
+    descriptionField.clear();
+    titleField.clear();
+    salleField.clear();
+    startDatePicker.setValue(null);
+    endDatePicker.setValue(null);
+    coachComboBox.setValue(null);
+    categoryComboBox.setValue(null);
+
+}
+
 
 }
 

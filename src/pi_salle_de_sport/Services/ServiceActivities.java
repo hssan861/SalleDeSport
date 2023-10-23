@@ -31,7 +31,7 @@ public class ServiceActivities implements IService <Activities> {
 Connection cnx = MyDB.getInstance().getCnx();
    @Override
 public void addReservation(Activities t) {
-    int userId = t.getIdCoach().getId_user();
+    int userId = t.getIdCoach().getId();
 
     try {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -122,7 +122,7 @@ public void addReservation(Activities t) {
 
   @Override
 public Boolean modifier(Activities t) {
-    int userId = t.getIdCoach().getId_user();
+    int userId = t.getIdCoach().getId();
 
     try {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -209,6 +209,49 @@ String req = "DELETE FROM activites WHERE code=" + r.getCode();
         }
         return Activities;
     }
+    
+    
+    public List<Activities> getAll() {
+    List<Activities> list = new ArrayList<>();
+    try {
+      
+
+        String req = "SELECT * FROM `activites`";
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(req);
+        
+        while (rs.next()) {
+            int userId = rs.getInt("id_user");
+                UserService userService = new UserService();
+                User user = userService.getUserById(userId);
+// g titre, Date date_deb, Date date_fin, User coach,pi_salle_de_sport.Entities.Categorie  categorie, String description,String salle)
+            Activities a = new Activities(
+                    
+               
+              rs.getInt("code"),
+              rs.getString("titre"),
+               
+              rs.getDate("date_deb"),
+                rs.getDate("date_fin"),
+                   user,
+                   
+                    Categorie.valueOf(rs.getString("categorie")),
+                     
+                rs.getString("description"),
+                rs.getString("salle")
+                
+               
+
+                
+            );
+            list.add(a);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+
+    return list;
+}
     }
 
     

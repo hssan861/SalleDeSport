@@ -30,7 +30,7 @@ public class ServiceReservation implements IService<Reservation> {
 
    @Override
 public void addReservation(Reservation t) {
-    int userId = t.getIdUser().getId_user();
+    int userId = t.getIdUser().getId();
     int activities = t.getCode().getCode();
 
     try {
@@ -150,7 +150,7 @@ public List<Reservation> afficher() {
 
     @Override
 public Boolean modifier(Reservation r) {
-    int userId = r.getIdUser().getId_user();
+    int userId = r.getIdUser().getId();
     int activities = r.getCode().getCode();
     String requete = "UPDATE `reservation_cours` SET `code`=?, `id_user`=? WHERE id=?";
     try {

@@ -5,8 +5,11 @@
  */
 package pi_salle_de_sport.GUI;
 
+import api.SendSMS;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +27,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import pi_salle_de_sport.Entities.Activities;
 import pi_salle_de_sport.Entities.Reservation;
@@ -41,6 +45,7 @@ public class AjouterReservationFXMLController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    ServiceActivities sa =new ServiceActivities();
     
     @FXML
     private ComboBox<Activities> activitesComboBox;
@@ -50,6 +55,8 @@ public class AjouterReservationFXMLController implements Initializable {
 
     @FXML
     private Button goAfficher;
+      @FXML      
+    private ListView<Activities> afficheracitiviter;
    
 
     @FXML
@@ -59,8 +66,8 @@ public class AjouterReservationFXMLController implements Initializable {
 
 void AjouterReservation(ActionEvent event) {
     // Obtenir la date actuelle
-    LocalDate dateRes = LocalDate.now();
-
+LocalDate dateRes = LocalDate.now();
+        
     // Récupérer l'utilisateur et l'activité sélectionnés
     User user = (User) utilisateurComboBox.getValue();
     Activities activities = (Activities) activitesComboBox.getValue();
@@ -80,6 +87,15 @@ void AjouterReservation(ActionEvent event) {
 
     // Afficher un message de succès
     showAlert("Succès", "Réservation ajoutée avec succès !");
+    
+    try {
+            SendSMS sm = new SendSMS();
+            sm.sendSMS(reservation);
+            System.out.println("SMS envoyé avec succès");
+        } catch (Exception e) {
+            // handle the exception here
+            e.printStackTrace();
+        }
 }
 
 private void showAlert(String title, String content) {
@@ -140,6 +156,12 @@ try {
         // Populate the ComboBox with coach data
         ObservableList<User> coaches = FXCollections.observableArrayList(coachList);
         utilisateurComboBox.setItems(coaches);
+        
+        // Initialiser la liste des activités
+      ObservableList<Activities> items = FXCollections.observableArrayList ()  ;
+        items.addAll(sa.afficher());
+        afficheracitiviter.setItems(items);
+        
     }    
     
 }

@@ -35,7 +35,8 @@ public class Pi_salle_de_sport {
         
         
         
-    }}
+        
+    
         
         
         
@@ -83,21 +84,22 @@ public class Pi_salle_de_sport {
         
         
         
-//        // AFFICHER LES ACTIVITES
-//          // Créez une instance de votre service (assumons que c'est votreService)
-//        ServiceActivities r= new ServiceActivities();
-//        List<Activities> activitiesList = r.afficher();
-//        for (Activities activity : activitiesList) {
-//    System.out.println("Code : " + activity.getCode());
-//    System.out.println("Catégorie : " + activity.getCategorie());
-//    System.out.println("Date de début : " + activity.getDateDeb());
-//    System.out.println("Date de fin : " + activity.getDateFin());
-//    System.out.println("Description : " + activity.getDescription());
-//    System.out.println("Coach : " + activity.getIdCoach());
-//    System.out.println("Salle : " + activity.getSalle());
-//    System.out.println("Titre : " + activity.getTitre());
-//    System.out.println("-----------------------------");
-//}}}
+        // AFFICHER LES ACTIVITES
+          // Créez une instance de votre service (assumons que c'est votreService)
+        ServiceActivities r= new ServiceActivities();
+       // List<Activities> activitiesList = r.afficher();
+        /*for (Activities activity : activitiesList) {
+    System.out.println("Code : " + activity.getCode());
+    System.out.println("Catégorie : " + activity.getCategorie());
+    System.out.println("Date de début : " + activity.getDateDeb());
+    System.out.println("Date de fin : " + activity.getDateFin());
+    System.out.println("Description : " + activity.getDescription());
+    System.out.println("Coach : " + activity.getIdCoach());
+    System.out.println("Salle : " + activity.getSalle());
+    System.out.println("Titre : " + activity.getTitre());
+    System.out.println("-----------------------------");*/
+        System.out.println(r.getAll());
+}}
 
         
         

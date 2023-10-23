@@ -13,22 +13,30 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import pi_salle_de_sport.Entities.Activities;
 
 /**
  *
  * @author HP
  */
 public class pi_salle_de_sport_fxml extends Application {
-    
+        static Activities activite =new Activities();
+
     @Override
     public void start(Stage primaryStage) {
         try {
+            // Load the icon image from the resources package
+            Image appIcon = new Image(getClass().getResourceAsStream("../images/logo.png"));
+
+            // Set the application's icon
+            primaryStage.getIcons().add(appIcon);
             Parent root=FXMLLoader.load(getClass().getResource("../pi_salle_de_sport/GUI/ajouterActivites.fxml"));
             //pi_salle_de_sport.GUI
             Scene scene = new Scene(root);
-            primaryStage.setTitle("ARTEC");
+            primaryStage.setTitle("FitFlex");
             primaryStage.setScene(scene);
             primaryStage.show();
             

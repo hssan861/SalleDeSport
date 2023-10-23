@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.Observable;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -41,26 +42,17 @@ import pi_salle_de_sport.Services.ServiceActivities;
  * @author HP
  */
 public class ListeactitvitiesFXMLController implements Initializable {
-    
+    ServiceActivities sa = new ServiceActivities();
+    private ObservableList<Activities> activitiesList;
+
      private Stage stage;
     private Scene scene;
     private Parent root;
-      @FXML
-    private Button ajouter;
        @FXML
     private TextField ActiviteRech;
-   @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Button Goajouter;
 @FXML
  private ListView<Activities> lvactivite;
 
-    @FXML
     void GoAjouter(ActionEvent event) {
 try {
 
@@ -77,7 +69,7 @@ try {
     }
     
 
-        ServiceActivities sa =new ServiceActivities();
+       
 
     /**
      * Initializes the controller class.
@@ -86,10 +78,16 @@ try {
     public void initialize(URL url, ResourceBundle rb) {
             // Initialiser la liste des activités
       ObservableList<Activities> items = FXCollections.observableArrayList ()  ;
-        items.addAll(sa.afficher());
-        lvactivite.setItems(items);
-    }    
-    
+        //items.addAll(sa.afficher());
+        //lvactivite.setItems(items);
+        activitiesList=FXCollections.observableArrayList();
+        loadActivities();
+        ActiviteRech.textProperty().addListener((observable, oldValue, newValue) -> {
+            search(newValue.toLowerCase());
+        });
+                
+                } 
+                
     
     
     
@@ -221,5 +219,22 @@ private LocalDate convertToLocalDate(Date date) {
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 }
+private void loadActivities() {
+        activitiesList.setAll(sa.getAll());
+        lvactivite.setItems(activitiesList);
+    }
+
+  private void search(String searchValue) {
+        ObservableList<Activities> filteredActivities = FXCollections.observableArrayList();
+
+        for (Activities activities : activitiesList) {
+            if (
+               (String.valueOf(activities.getTitre()).toLowerCase().contains(searchValue)))     {
+                filteredActivities.add(activities);
+            }
+        }
+
+        lvactivite.setItems(filteredActivities);
+    }
 
 }

@@ -116,9 +116,18 @@ public class Activities {
     }
 
     @Override
-    public String toString() {
-        return  titre ;
-    }
+public String toString() {
+    return "Activity Details:\n" +
+           "Title: " + titre + "\n" +
+           "Start Date: " + date_deb + "\n" +
+           "End Date: " + date_fin + "\n" +
+           "Coach: " + coach + "\n" +
+           "Category: " + categorie + "\n" +
+           "Description: " + description + "\n" +
+           "Salle: " + salle;
+}
+
+
 
    
 
