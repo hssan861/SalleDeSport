@@ -116,4 +116,23 @@ public class ResetPasswordController implements Initializable {
             a.showAndWait();
         }
     }
+    @FXML
+    private void Annuler(ActionEvent event){
+        try {
+            // Load the Login.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            Parent root = loader.load();
+
+            // Get the stage (window) of the current scene
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Set the new scene
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+        
+        
+}
 }

@@ -132,7 +132,7 @@ public void deleteReclamation(Reclamation reclamation) {
             // Retrieve the associated user
             UserService userService = new UserService();
             User user = userService.getUserById(userId);
-
+            
             Reclamation reclamation = new Reclamation(reclamationId, description, user);
             list.add(reclamation);
         }

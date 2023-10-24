@@ -5,6 +5,9 @@
  */
 package util;
 
+import gui.LoginController;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -19,6 +22,35 @@ import java.util.regex.Pattern;
  */
 public class Utils {
     
+    
+    public static void clearFile(String filePath){
+        PrintWriter writer = null;
+                try {
+                    writer = new PrintWriter(filePath);
+                    writer.close();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                } finally {
+                    writer.close();
+                }
+    }
+
+    
+    public static void saveEmailAndPassword(String email,String password) {
+        
+        try{
+                            System.out.println("save email");
+
+            PrintWriter out = new PrintWriter("account.txt");
+            out.append(email);
+            out.append("\n");
+            out.append(password);
+            out.flush();
+            out.close();
+        }catch(FileNotFoundException exception){
+            System.out.println("error");
+        }
+    }
     public static boolean isValidEmail(String email) {
         Pattern p = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
         Matcher m = p.matcher(email);

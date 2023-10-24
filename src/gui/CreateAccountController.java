@@ -94,7 +94,9 @@ public class CreateAccountController implements Initializable {
         else {
              UserService su = new  UserService();
             User u = new User(nomField.getText(),prenomField.getText(),Utils.encryptString(passwordField.getText()) ,Role.Utilisateur,emailField.getText(),imageField.getText(), Integer.parseInt(ageField.getText()) ) {} ;
-            su.ajouterUser(u);
+            if(!su.ajouterUser(u)){
+                return;
+            }
             List<User> all = su.getAll();
             nomField.clear();
             prenomField.clear();

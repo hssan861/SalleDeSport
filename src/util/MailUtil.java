@@ -48,7 +48,7 @@ public class MailUtil{
 
           msg.setSubject("app test email", "UTF-8");
 
-          msg.setText("CHANGE THIS AS WELL\n"+verificationCode, "UTF-8");
+          msg.setText("//TODO:CHANGE THIS \n"+verificationCode, "UTF-8");
 
           msg.setSentDate(new Date());
 

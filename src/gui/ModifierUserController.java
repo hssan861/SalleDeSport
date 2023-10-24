@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import models.Role; // Import the Role enum from your models package
 import models.User;
 import services.UserService;
+import util.Utils;
 
 public class ModifierUserController {
 
@@ -65,7 +66,7 @@ public class ModifierUserController {
         // Get user data from the form fields
         userData.setNom(nomField.getText());
         userData.setPrenom(prenomField.getText());
-        userData.setMdp(passwordField.getText());
+        userData.setMdp(Utils.encryptString(passwordField.getText()));
         userData.setEmail(emailField.getText());
         userData.setAge(Integer.parseInt(ageField.getText()));
         userData.setImg(imageField.getText());

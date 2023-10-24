@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.BufferedReader;
 import services.UserService;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,17 +22,24 @@ import javafx.stage.Stage;
 import models.User;
 import util.MyConnection;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.InputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
-import models.Login;
+
 import models.Role;
 import util.Utils;
 
@@ -61,11 +69,20 @@ public class LoginController implements Initializable {
 @FXML
     private Hyperlink mdpOublieHyperlink;
 
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         UserService userService = new UserService();
-  //      loadEmailAndPassword(); // Load email and password if saved
+        try {
+        List<String> lines = Files.readAllLines(Paths.get("account.txt"), StandardCharsets.UTF_8);
+        if(lines.size()>=2){
+            username.setText(lines.get(0));
+            password.setText(lines.get(1));
+            Utils.clearFile("account.txt");
+        }
+                //      loadEmailAndPassword(); // Load email and password if saved
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
@@ -82,7 +99,7 @@ public class LoginController implements Initializable {
     private void login(ActionEvent event) throws IOException {
         User Log_in = User.getInstance();
         UserService su = new UserService();
-
+        
         String userEmail = username.getText();
         String userPassword = Utils.encryptString(password.getText());
 
@@ -97,7 +114,7 @@ public class LoginController implements Initializable {
         } else {
             String role = su.getRoleByEmail(userEmail);
            // User loggedInUser = su.getuserbyemailandpass(userEmail, userPassword);
-
+           
             if ("Admin".equals(role)) {
                 User u = su.getuserbyemailandpass(userEmail, userPassword);
                 if (u != null) {
@@ -116,7 +133,7 @@ public class LoginController implements Initializable {
                     Parent userInterfaceRoot = FXMLLoader.load(getClass().getResource("UserInterface.fxml"));
                     Scene userInterfaceScene = new Scene(userInterfaceRoot);
                     userInterfaceStage.setScene(userInterfaceScene);
-
+                    
                     // Get the current login stage and close it
                     Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     currentStage.close();
@@ -165,12 +182,48 @@ public class LoginController implements Initializable {
                 } else {
                     showAlert("Les données sont invalides!");
                 }
-            } else {
-                showAlert("Accès refusé. Vous n'avez pas la permission d'accéder à cette interface.");
+            } else if("Coach".equals(role)){
+                
+                User u = su.getuserbyemailandpass(userEmail, userPassword);
+                if (u != null) {
+             
+                    Log_in.setId(u.getId());
+                    Log_in.setNom(u.getNom());
+                    Log_in.setPrenom(u.getPrenom());
+                    Log_in.setEmail(u.getEmail());
+                    Log_in.setMdp(u.getMdp());
+                    Log_in.setRole(u.getRole());
+                    Alert a = new Alert(Alert.AlertType.INFORMATION, "Authentifié avec Succès!", ButtonType.OK);
+                    a.showAndWait();
+
+                    // Close the current login stage
+                    Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    currentStage.close();
+
+                    // Open the EspaceClient stage
+                    Stage espaceCoachStage = new Stage();
+                    Parent espaceCoachRoot = FXMLLoader.load(getClass().getResource("EspaceCoach.fxml"));
+                    Scene espaceCoachScene = new Scene(espaceCoachRoot);
+                    espaceCoachStage.setScene(espaceCoachScene);
+                    espaceCoachStage.show();
+                    
+
+                    
+                } else {
+                    showAlert("Les données sont invalides!");
+                }
+                
+                
+                
+            }else{
+                 showAlert("Accès refusé. Vous n'avez pas la permission d'accéder à cette interface.");
             }
+            if (rememberCheckbox.isSelected()) {
+                        Utils.saveEmailAndPassword(Log_in.getEmail(),password.getText());
+                }
         }
     }
-
+    
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erreur d'authentification");

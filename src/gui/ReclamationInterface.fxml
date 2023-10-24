@@ -8,37 +8,35 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="542.0" prefWidth="1008.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReclamationInterfaceController">
+<AnchorPane prefHeight="600.0" prefWidth="1100.0" stylesheets="@../StyleCss/BackgroundAdmin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReclamationInterfaceController">
 
     <children>
-        <Button fx:id="addUserButton" layoutX="91.0" layoutY="375.0" mnemonicParsing="false" onAction="#handleAjouterButtonAction" style="-fx-background-color: #e39827; -fx-text-fill: white;" text="Ajouter">
+        <Button fx:id="addUserButton" layoutX="235.0" layoutY="429.0" mnemonicParsing="false" onAction="#handleAjouterButtonAction" style="-fx-background-color: #1b95b2; -fx-text-fill: white;" text="Ajouter">
             <font>
                 <Font name="Berlin Sans FB Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="modifierButton" layoutX="186.0" layoutY="375.0" mnemonicParsing="false" onAction="#handleModifierButtonAction" style="-fx-background-color: #e39827; -fx-text-fill: white;" text="Modifier">
+        <Button fx:id="deleteUserButton" layoutX="305.0" layoutY="429.0" mnemonicParsing="false" onAction="#handleSupprimerButtonAction" style="-fx-background-color: #1b95b2; -fx-text-fill: white;" text="Supprimer">
             <font>
                 <Font name="Berlin Sans FB Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="deleteUserButton" layoutX="281.0" layoutY="375.0" mnemonicParsing="false" onAction="#handleSupprimerButtonAction" style="-fx-background-color: #e39827; -fx-text-fill: white;" text="Supprimer">
+        <Button fx:id="refreshButton" layoutX="396.0" layoutY="429.0" mnemonicParsing="false" onAction="#handleRefreshButtonAction" style="-fx-background-color: #1b95b2; -fx-text-fill: white;" text="Actualiser">
             <font>
                 <Font name="Berlin Sans FB Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="refreshButton" layoutX="385.0" layoutY="375.0" mnemonicParsing="false" onAction="#handleRefreshButtonAction" style="-fx-background-color: #e39827; -fx-text-fill: white;" text="Actualiser">
+        <Button fx:id="deconnexionButton" layoutX="479.0" layoutY="429.0" mnemonicParsing="false" onAction="#handleDeconnexionButtonAction" style="-fx-background-color: #1b95b2; -fx-text-fill: white;" text="Déconnexion">
             <font>
                 <Font name="Berlin Sans FB Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="deconnexionButton" layoutX="480.0" layoutY="375.0" mnemonicParsing="false" onAction="#handleDeconnexionButtonAction" style="-fx-background-color: #e39827; -fx-text-fill: white;" text="Déconnexion">
-            <font>
-                <Font name="Berlin Sans FB Bold" size="12.0" />
-            </font>
-        </Button>
-        <TextField fx:id="searchField" layoutX="375.0" layoutY="126.0" promptText="Filter" />
+        <TextField fx:id="searchField" layoutX="463.0" layoutY="200.0" promptText="Filter">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
 
-        <TableView fx:id="reclamationsTable" layoutX="91.0" layoutY="192.0" prefHeight="182.0" prefWidth="509.0" style="-fx-border-radius: 30; -fx-background-color: #d6d6d6;">
+        <TableView fx:id="reclamationsTable" layoutX="141.0" layoutY="246.0" prefHeight="182.0" prefWidth="509.0" style="-fx-border-radius: 30; -fx-background-color: #d6d6d6;">
             <columns>
                 <TableColumn fx:id="descriptionColumn" prefWidth="118.0" style="-fx-border-radius: 30; -fx-background-color: #d6d6d6;" text="Déscription" />
                 <TableColumn fx:id="nomColumn" prefWidth="111.0" style="-fx-border-radius: 30; -fx-background-color: #d6d6d6;" text="Nom" />
@@ -47,12 +45,12 @@
                 <TableColumn fx:id="imageColumn" prefWidth="102.0" style="-fx-border-radius: 30; -fx-background-color: #d6d6d6;" text="Image" />
             </columns>
         </TableView>
-        <Label layoutX="84.0" layoutY="60.0" prefHeight="66.0" prefWidth="456.0" text="Liste des réclamations" textAlignment="JUSTIFY" textFill="#e39827">
+        <Label layoutX="51.0" layoutY="86.0" prefHeight="66.0" prefWidth="456.0" text="Liste des réclamations" textAlignment="JUSTIFY" textFill="WHITE">
             <font>
                 <Font size="45.0" />
             </font>
         </Label>
-     <Button layoutX="681.0" layoutY="434.0" mnemonicParsing="false" onAction="#handleRetourButtonAction" style="-fx-background-color: #e39827; -fx-text-fill: white;" text="Retour">
+     <Button layoutX="872.0" layoutY="550.0" mnemonicParsing="false" onAction="#handleRetourButtonAction" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: #1b95b2; -fx-text-fill: white;" text="Retour">
     <font>
         <Font name="Berlin Sans FB Bold" size="12.0" />
     </font>

@@ -11,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import models.User;
-import models.Login;
+
 public class EspaceClientController implements Initializable {
     // ... (your existing code)
 
@@ -45,7 +45,8 @@ public class EspaceClientController implements Initializable {
             // Load the AddReclamation.fxml file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AddReclamation.fxml"));
             Parent root = loader.load();
-
+            AddReclamationController controller=loader.getController();
+            controller.setPreviousScene(((Node) event.getSource()).getScene());
             // Get the stage (window) of the current scene
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -62,6 +63,23 @@ public class EspaceClientController implements Initializable {
         try {
             // Load the Login.fxml file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            Parent root = loader.load();
+
+            // Get the stage (window) of the current scene
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Set the new scene
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+     @FXML
+    private void Voirrec(ActionEvent event) {
+        try {
+            // Load the Login.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ReclamationInterfaceClient.fxml"));
             Parent root = loader.load();
 
             // Get the stage (window) of the current scene

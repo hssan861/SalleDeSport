@@ -6,12 +6,12 @@
             <file>file:/C:/Users/USER/Gym/src/gui/LoginController.java</file>
             <file>file:/C:/Users/USER/Gym/src/services/UserService.java</file>
             <file>file:/C:/Users/USER/Gym/src/gui/CreateAccountController.java</file>
-            <file>file:/C:/Users/USER/Gym/src/gui/ReclamationInterfaceController.java</file>
-            <file>file:/C:/Users/USER/Gym/src/gui/SetNewPasswordController.java</file>
-            <file>file:/C:/Users/USER/Gym/src/services/ReclamationService.java</file>
+            <file>file:/C:/Users/USER/Gym/src/gui/AddUserController.java</file>
             <file>file:/C:/Users/USER/Gym/src/gui/UserInterfaceController.java</file>
-            <file>file:/C:/Users/USER/Gym/src/gym/Gym.java</file>
-            <file>file:/C:/Users/USER/Gym/src/gui/ResetPasswordController.java</file>
+            <file>file:/C:/Users/USER/Gym/src/gui/AddReclamationController.java</file>
+            <file>file:/C:/Users/USER/Gym/src/gui/ReclamationInterfaceClientController.java</file>
+            <file>file:/C:/Users/USER/Gym/src/gui/EspaceClientController.java</file>
+            <file>file:/C:/Users/USER/Gym/src/gui/ModifierUserController.java</file>
         </group>
     </open-files>
 </project-private>

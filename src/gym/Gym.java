@@ -48,7 +48,7 @@ public class Gym extends Application{
         //UserService su =new UserService();
         //su.getuserbyemailandpass("hssan.ghorbel@esprit.tn","123456789");
           //su.getRoleByEmail("aziz.souissi@esprit.tn");
-        // TODO code application logic here
+        // TODO codea application logic here
      
        /*User u= new User("haythem","mekki","hahaha",Coach,"haythem.mekki@esprit.tn","haythem.jpg",24);
         UserService us=new UserService();

@@ -1,5 +1,8 @@
 package models;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public class Reclamation {
     private int id;
     private String description;
@@ -55,5 +58,16 @@ public class Reclamation {
     @Override
     public String toString() {
         return "Reclamation{" + "id=" + id + ", description=" + description + ", user=" + user + '}';
+        
     }
+    public ImageView getImageAsImageView() {
+        // Créez un ImageView à partir du nom de fichier d'image
+        ImageView imageView = new ImageView(new Image( this.user.getImg()));
+        // Configurez la taille de l'image si nécessaire
+        imageView.setFitWidth(100); // Largeur souhaitée
+        imageView.setFitHeight(100); // Hauteur souhaitée
+        return imageView;
+    }
+    
+    
 }

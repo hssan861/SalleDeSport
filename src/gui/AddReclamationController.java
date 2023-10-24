@@ -18,7 +18,6 @@ import models.Reclamation;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
-import models.Login;
 import models.Role;
 
 public class AddReclamationController implements Initializable {
@@ -33,10 +32,18 @@ public class AddReclamationController implements Initializable {
         // Initialization code if needed
         login=User.getInstance();
     }
-
-
+    public Scene previousScene; 
+    public void setPreviousScene(Scene previousScene){
+        this.previousScene=previousScene;
+    }
+    
     @FXML
     private void ajouterReclamation(ActionEvent event) {
+        if (descriptionTextArea.getText().isEmpty()  ) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Aucun champ vide n'est accepté", ButtonType.OK);
+            a.showAndWait();
+        }
+        else{
         ReclamationService rs = new ReclamationService();
         try {
             // Handle user input and add the user to the database
@@ -53,10 +60,17 @@ public class AddReclamationController implements Initializable {
         } catch (NumberFormatException e) {
             // Handle invalid age input
         }
+           }
     }
 
     @FXML
     private void retourEspaceClient(ActionEvent event) {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(previousScene);
+               stage.show();
+
+        
+        /*
         // Close the current AddReclamation stage
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.close();
@@ -75,7 +89,7 @@ public class AddReclamationController implements Initializable {
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     private void showAlert(String message) {

@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -97,17 +98,22 @@ public class ReclamationInterfaceController implements Initializable {
         reclamationInterfaceStage.close(); // Close the ReclamationInterface stage
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/AddReclamation.fxml"));
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/AddReclamation.fxml"));
             Parent root = loader.load();
-            Stage addReclamationStage = new Stage();
-            addReclamationStage.setScene(new Scene(root));
-            addReclamationStage.setTitle("Add Reclamation");
-            addReclamationStage.show();
+            AddReclamationController controller=loader.getController();
+            controller.setPreviousScene(((Node) event.getSource()).getScene());
+            // Get the stage (window) of the current scene
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Set the new scene
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
+/*
  @FXML
 private void handleModifierButtonAction(ActionEvent event) {
     try {
@@ -141,7 +147,7 @@ private void handleModifierButtonAction(ActionEvent event) {
         e.printStackTrace();
     }
 }
-
+*/
 
 
 

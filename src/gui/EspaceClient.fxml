@@ -14,5 +14,6 @@
         </Label>
         <Button layoutX="292.0" layoutY="315.0" mnemonicParsing="false" onAction="#deconnexion" text="Déconnexion" />
         <Button layoutX="142.0" layoutY="315.0" mnemonicParsing="false" onAction="#ajoutReclamation" text="Ajouter réclamation" />
+      <Button fx:id="voirreclamation" layoutX="409.0" layoutY="315.0" mnemonicParsing="false" onAction="#Voirrec" prefHeight="26.0" prefWidth="137.0" text="Voir réclamations" />
     </children>
 </AnchorPane>

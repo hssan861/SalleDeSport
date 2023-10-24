@@ -18,6 +18,8 @@ import models.User;
 import util.MyConnection;
 import java.io.*;
 import java.util.Properties;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 public class UserService {
     private MyConnection myConnection = MyConnection.getInstance();
@@ -54,8 +56,13 @@ public class UserService {
         return false;
     }
 
-    public void ajouterUser(User user) {
+    public boolean ajouterUser(User user) {
         String query = "INSERT INTO user(`Nom`, `Prenom`, `Mdp`, `Role`, `Email`, `Img`, `Age`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+         if(UserExists(user.getEmail())){
+             Alert alert = new Alert(Alert.AlertType.ERROR, "Email dèja existe!", ButtonType.OK);
+            alert.showAndWait();
+             return false;
+         }
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, user.getNom());
@@ -69,7 +76,10 @@ public class UserService {
             System.out.println("User added successfully!");
         } catch (SQLException ex) {
             Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+                        return false;
+
         }
+        return true;
     }
 
     public List<User> afficherUser() {
