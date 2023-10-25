@@ -96,7 +96,7 @@ public class Participation {
 
     @Override
     public String toString() {
-        return "Participation{" + "event=" + event + ", datePart=" + datePart + ", Nom=" + Nom + ", Prenom=" + Prenom + ", Ntel=" + Ntel + '}';
+        return  "event=" + event  + "       Nom=" + Nom + "        Prenom=" + Prenom  ;
     }
 
     public void setIdEvent(Event event) {

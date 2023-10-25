@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="494.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherPartFXMLController">
    <children>
-      <AnchorPane layoutX="6.0" layoutY="1.0" prefHeight="494.0" prefWidth="733.0">
+      <AnchorPane layoutX="6.0" layoutY="1.0" prefHeight="600.0" prefWidth="1100.0" styleClass="root" stylesheets="@affcss.css">
          <children>
-            <ListView fx:id="LvPart" layoutX="213.0" layoutY="100.0" prefHeight="350.0" prefWidth="504.0" />
-            <Pane layoutX="-7.0" layoutY="-1.0" prefHeight="498.0" prefWidth="208.0" style="-fx-background-color: #808000;">
-               <children>
-                  <Button layoutX="56.0" layoutY="187.0" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="97.0" text="Ajouter" />
-                  <Button layoutX="56.0" layoutY="237.0" mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="97.0" text="Modifier" />
-                  <Button layoutX="56.0" layoutY="285.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="97.0" text="Supprimer" />
-                  <Label layoutX="16.0" layoutY="109.0" prefHeight="34.0" prefWidth="175.0" text="Chére Utilisateur" textAlignment="CENTER">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="49.0" layoutY="459.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="HOME" />
-               </children>
-            </Pane>
-            <TextField fx:id="rechField" layoutX="250.0" layoutY="44.0" />
-            <Button fx:id="Brech" layoutX="425.0" layoutY="44.0" mnemonicParsing="false" onAction="#rechercher" text="Rechercher" />
+            <TextField fx:id="rechField" layoutX="250.0" layoutY="44.0" prefHeight="26.0" prefWidth="250.0" />
+            <Button fx:id="Brech" layoutX="570.0" layoutY="50.0" mnemonicParsing="false" onAction="#rechercher" style="-fx-background-color: #1b95b2;" text="Rechercher" textFill="WHITE" />
+            <Button layoutX="28.0" layoutY="267.0" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #1b95b2;" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="28.0" layoutY="343.0" mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #1b95b2;" text="Modifier" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="28.0" layoutY="409.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #1b95b2;" text="Supprimer" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <ListView fx:id="LvPart" layoutX="222.0" layoutY="158.0" prefHeight="402.0" prefWidth="715.0" />
          </children>
       </AnchorPane>
    </children>

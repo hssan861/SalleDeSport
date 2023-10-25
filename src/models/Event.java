@@ -8,6 +8,8 @@ package models;
 import java.time.LocalDate;
 import static java.time.temporal.TemporalQueries.localDate;
 import java.util.Date;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -19,7 +21,8 @@ public class Event {
     private String titreEvent,nomCoach,typeEvent,adresseEvent,imgEvent;
     private LocalDate dateEvent;
     private double PrixEvent;
-   
+    private int nombrePlacesTotal;
+    private int nombrePlacesReservees;
     
     
     //constructor
@@ -111,15 +114,41 @@ public class Event {
     public void setImgEvent(String imgEvent) {
         this.imgEvent = imgEvent;
     }
-    
+     public Event(int nombrePlacesTotal) {
+        this.nombrePlacesTotal = nombrePlacesTotal;
+        this.nombrePlacesReservees = 0; // Initially, no places are reserved
+    }
+
+    public int getNombrePlacesTotal() {
+        return nombrePlacesTotal;
+    }
+
+    public int getNombrePlacesReservees() {
+        return nombrePlacesReservees;
+    }
+
+    public int getNombrePlacesDisponibles() {
+        return nombrePlacesTotal - nombrePlacesReservees;
+    }
+
+    public void incrementNombrePlacesReservees() {
+        nombrePlacesReservees++;
+    }
+
+   
+
     //Display
 
     @Override
     public String toString() {
-        return   titreEvent+"   " + nomCoach  +"   "+ typeEvent +"   "+ adresseEvent+"   " + imgEvent+"   " + dateEvent+"   " + PrixEvent ;
+        return   titreEvent  ;
     }
 
-    
+    public void setDateEvent(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
     
    
 }

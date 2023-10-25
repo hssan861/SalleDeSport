@@ -6,59 +6,48 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierPartFXMLController">
    <children>
-      <AnchorPane prefHeight="514.0" prefWidth="784.0">
+      <AnchorPane prefHeight="600.0" prefWidth="1100.0" styleClass="root" stylesheets="@cssStyle.css">
          <children>
-            <Pane layoutX="-6.0" prefHeight="518.0" prefWidth="200.0" style="-fx-background-color: #808000;">
-               <children>
-                  <Button layoutX="51.0" layoutY="472.0" mnemonicParsing="false" onAction="#retourHome" text="HOME" />
-               </children>
-            </Pane>
-            <Label layoutX="318.0" layoutY="35.0" prefHeight="43.0" prefWidth="382.0" text="Modifier Votre Reservation" textFill="#ff7c02">
-               <font>
-                  <Font name="System Bold Italic" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="237.0" layoutY="125.0" prefHeight="38.0" prefWidth="50.0" text="Nom :">
+            <Label layoutX="221.0" layoutY="212.0" prefHeight="38.0" prefWidth="50.0" text="Nom :" textFill="#ff7c02">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="503.0" layoutY="125.0" prefHeight="38.0" prefWidth="56.0" text="Prenom :">
+            <Label layoutX="613.0" layoutY="212.0" prefHeight="38.0" prefWidth="56.0" text="Prenom :" textFill="#ff7c02">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="237.0" layoutY="201.0" prefHeight="38.0" prefWidth="56.0" text="N° TEL :">
+            <Label layoutX="218.0" layoutY="280.0" prefHeight="38.0" prefWidth="56.0" text="N° TEL :" textFill="#ff7c02">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="523.0" layoutY="201.0" prefHeight="38.0" prefWidth="42.0" text="Date :">
+            <Label layoutX="627.0" layoutY="281.0" prefHeight="38.0" prefWidth="42.0" text="Date :" textFill="#ff7c02">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="350.0" layoutY="281.0" prefHeight="38.0" prefWidth="97.0" text="Evénements :">
+            <Label layoutX="377.0" layoutY="382.0" prefHeight="38.0" prefWidth="97.0" text="Evénements :" textFill="#ff7c02">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="tfNom" layoutX="292.0" layoutY="131.0" />
-            <TextField fx:id="tfNTEL" layoutX="292.0" layoutY="207.0" />
-            <TextField fx:id="tfPrenom" layoutX="581.0" layoutY="131.0" />
-            <ComboBox fx:id="tfEvent" layoutX="434.0" layoutY="287.0" prefWidth="150.0" promptText="Choisir" />
-            <Button fx:id="afMod" layoutX="538.0" layoutY="410.0" mnemonicParsing="false" onAction="#afficherPartMod" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #e19645;" text="Afficher">
+            <TextField fx:id="tfNom" layoutX="292.0" layoutY="219.0" promptText="Nom" />
+            <TextField fx:id="tfNTEL" layoutX="292.0" layoutY="287.0" promptText="+216 XX XXX XXX" />
+            <TextField fx:id="tfPrenom" layoutX="693.0" layoutY="219.0" promptText="Prenom" />
+            <ComboBox fx:id="tfEvent" layoutX="475.0" layoutY="389.0" prefWidth="150.0" promptText="Choisir" />
+            <Button fx:id="afMod" layoutX="931.0" layoutY="540.0" mnemonicParsing="false" onAction="#afficherPartMod" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #1b95b2;" text="Afficher" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <DatePicker fx:id="tfDatePart" layoutX="583.0" layoutY="206.0" prefHeight="26.0" prefWidth="150.0" />
-            <Button layoutX="310.0" layoutY="410.0" mnemonicParsing="false" onAction="#ConfirmerPart" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #e19645;" text="Confirmer">
+            <DatePicker fx:id="tfDatePart" layoutX="692.0" layoutY="287.0" prefHeight="26.0" prefWidth="150.0" />
+            <Button layoutX="747.0" layoutY="540.0" mnemonicParsing="false" onAction="#ConfirmerPart" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #1b95b2;" text="Confirmer" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

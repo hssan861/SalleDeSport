@@ -4,7 +4,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -12,88 +11,64 @@
 
 <AnchorPane id="AnchorPane" prefHeight="514.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjoutEventFXMLController">
    <children>
-      <AnchorPane fx:id="root1" prefHeight="514.0" prefWidth="795.0">
+      <AnchorPane fx:id="root1" prefHeight="600.0" prefWidth="1100.0" styleClass="root" stylesheets="@cssStyle.css">
          <children>
-            <Pane layoutX="-1.0" layoutY="-1.0" prefHeight="518.0" prefWidth="226.0" style="-fx-background-color: #808000;">
-               <children>
-                  <Label layoutX="31.0" layoutY="155.0" prefHeight="49.0" prefWidth="158.0" text="Ajouter un nouveau " textFill="#fffdfd">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="55.0" layoutY="204.0" prefHeight="49.0" prefWidth="94.0" text="Evenement" textAlignment="CENTER" textFill="#fff9f9">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="aff" layoutX="55.0" layoutY="276.0" mnemonicParsing="false" onAction="#AffichageEv" prefHeight="37.0" prefWidth="94.0" style="-fx-background-color: #f2bc74;" text="Afficher" textFill="#181818">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="55.0" layoutY="335.0" mnemonicParsing="false" onAction="#clearEvent" prefHeight="37.0" prefWidth="94.0" style="-fx-background-color: #f2bc74;" text="Effacer">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
-                  
-               </children></Pane>
-            <Label layoutX="263.0" layoutY="80.0" prefHeight="35.0" prefWidth="166.0" text="Titre D'évenement :" textFill="#f2bc74">
+            <Label layoutX="119.0" layoutY="208.0" prefHeight="35.0" prefWidth="166.0" text="Titre D'évenement :" textFill="#f2bc74">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Label>
-            <Label layoutX="263.0" layoutY="131.0" prefHeight="35.0" prefWidth="138.0" text="Nom du Coach :" textFill="#f2bc74">
+            <Label layoutX="558.0" layoutY="208.0" prefHeight="35.0" prefWidth="138.0" text="Nom du Coach :" textFill="#f2bc74">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Label>
-            <Label layoutX="263.0" layoutY="184.0" prefHeight="35.0" prefWidth="158.0" text="Type D'evenement :" textFill="#f2bc74">
+            <Label layoutX="123.0" layoutY="277.0" prefHeight="35.0" prefWidth="158.0" text="Type D'evenement :" textFill="#f2bc74">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Label>
-            <Label layoutX="253.0" layoutY="238.0" prefHeight="35.0" prefWidth="180.0" text="Adresse D'evenement :" textFill="#f2bc74">
+            <Label layoutX="514.0" layoutY="277.0" prefHeight="35.0" prefWidth="180.0" text="Adresse D'evenement :" textFill="#f2bc74">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Label>
-            <Label layoutX="299.0" layoutY="287.0" prefHeight="35.0" prefWidth="66.0" text="Date :" textFill="#f2bc74">
+            <Label layoutX="230.0" layoutY="353.0" prefHeight="35.0" prefWidth="66.0" text="Date :" textFill="#f2bc74">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Label>
-            <Label layoutX="299.0" layoutY="332.0" prefHeight="35.0" prefWidth="66.0" text="Prix :" textFill="#f2bc74">
+            <Label layoutX="627.0" layoutY="354.0" prefHeight="35.0" prefWidth="66.0" text="Prix :" textFill="#f2bc74">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Label>
-            <Label layoutX="279.0" layoutY="427.0" prefHeight="35.0" prefWidth="66.0" text="Image :" textFill="#f2bc74">
+            <Label layoutX="202.0" layoutY="473.0" prefHeight="35.0" prefWidth="66.0" text="Image :" textFill="#f2bc74">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Label>
-            <TextField fx:id="tfTitre" layoutX="460.0" layoutY="85.0" />
-            <TextField fx:id="tfCoach" layoutX="458.0" layoutY="136.0" />
-            <TextField fx:id="tfType" layoutX="458.0" layoutY="189.0" />
-            <TextField fx:id="tfAdresse" layoutX="458.0" layoutY="244.0" />
-            <TextField fx:id="tfPrix" layoutX="454.0" layoutY="337.0" prefHeight="26.0" prefWidth="158.0" />
-            <Button layoutX="638.0" layoutY="467.0" mnemonicParsing="false" onAction="#AjouterEv" prefHeight="38.0" prefWidth="150.0" text="Enregistrer " textFill="#416910">
+            <TextField fx:id="tfTitre" layoutX="318.0" layoutY="213.0" prefHeight="26.0" prefWidth="158.0" />
+            <TextField fx:id="tfCoach" layoutX="689.0" layoutY="213.0" prefHeight="26.0" prefWidth="158.0" />
+            <TextField fx:id="tfType" layoutX="322.0" layoutY="281.0" prefHeight="26.0" prefWidth="158.0" />
+            <TextField fx:id="tfAdresse" layoutX="693.0" layoutY="281.0" prefHeight="26.0" prefWidth="158.0" />
+            <TextField fx:id="tfPrix" layoutX="696.0" layoutY="359.0" prefHeight="26.0" prefWidth="158.0" />
+            <Button layoutX="865.0" layoutY="532.0" mnemonicParsing="false" onAction="#AjouterEv" prefHeight="38.0" prefWidth="116.0" style="-fx-background-color: #1b95b2;" text="Enregistrer " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="533.0" layoutY="431.0" mnemonicParsing="false" onAction="#loadImg" prefHeight="26.0" prefWidth="107.0" text="Choisir fichier" />
-            <DatePicker fx:id="tfDate" layoutX="456.0" layoutY="292.0" prefHeight="26.0" prefWidth="158.0" />
-            <Label layoutX="413.0" layoutY="14.0" prefHeight="50.0" prefWidth="200.0" text="Bienvenue ADMIN" textAlignment="CENTER" textFill="#60a90d">
+            <Button layoutX="587.0" layoutY="491.0" mnemonicParsing="false" onAction="#loadImg" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #1b95b2;" text="Choisir fichier" textFill="WHITE">
                <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="tfImage" fitHeight="119.0" fitWidth="150.0" layoutX="364.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true" />
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <DatePicker fx:id="tfDate" layoutX="322.0" layoutY="358.0" prefHeight="26.0" prefWidth="158.0" />
+            <ImageView fx:id="tfImage" fitHeight="141.0" fitWidth="192.0" layoutX="305.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true" />
             
-            <Pane layoutX="713.0" layoutY="8.0" prefHeight="111.0" prefWidth="124.0">
-               <children>
-                  <ImageView fx:id="logo" fitHeight="111.0" fitWidth="124.0">
-                     <image>
-                        <Image url="@Fun_run_people_logo-removebg-preview.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
+            <Pane layoutX="713.0" layoutY="8.0" prefHeight="111.0" prefWidth="124.0" />
+            <Button fx:id="aff" layoutX="756.0" layoutY="532.0" mnemonicParsing="false" onAction="#AffichageEv" prefHeight="37.0" prefWidth="94.0" style="-fx-background-color: #1b95b2;" text="Afficher" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="991.0" layoutY="532.0" mnemonicParsing="false" onAction="#clearEvent" prefHeight="37.0" prefWidth="94.0" style="-fx-background-color: #1b95b2;" text="Effacer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

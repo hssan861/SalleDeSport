@@ -5,8 +5,10 @@
  */
 package gui;
 
+import static gui.ParticipationFXMain.part;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +21,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import models.Event;
 import models.Participation;
@@ -42,13 +46,19 @@ public class AfficherPartFXMLController implements Initializable {
      * Initializes the controller class.
      */
             ParticipationServices ps = new ParticipationServices();
+            private List<PartFXMLController> controllers;
+                       ObservableList<Participation> part = FXCollections.observableArrayList();
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       // ParticipationServices sp = new ParticipationServices();
-             ObservableList<Participation> part = FXCollections.observableArrayList();
-        part.addAll(ps.afficherParticipation());
-        LvPart.setItems(part);
+       
+           ObservableList<Participation> part = FXCollections.observableArrayList();
+
+        loadUsers();
+        rechField.textProperty().addListener((observable, oldValue, newValue) -> {
+searchEvent(newValue.toLowerCase());
+        });
         
     }    
 
@@ -99,6 +109,24 @@ public class AfficherPartFXMLController implements Initializable {
 
     @FXML
     private void rechercher(ActionEvent event) {
+    }
+    private void searchEvent(String searchValue) {
+        ObservableList<Participation> filteredUsers = FXCollections.observableArrayList();
+
+        for (Participation user : part) {
+            if (user.getNom().toLowerCase().contains(searchValue) ||
+                user.getPrenom().toLowerCase().contains(searchValue) 
+               )   
+            
+                filteredUsers.add(user);
+            
+        }
+
+        LvPart.setItems(filteredUsers);
+    }
+    private void loadUsers() {
+        part.setAll(ps.getAll());
+        LvPart.setItems(part);
     }
     
 }

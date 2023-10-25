@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Event;
+import models.Participation;
 import util.MyConnection;
 
 /**
@@ -162,5 +163,33 @@ E.setDateEvent(localDate);
         Logger.getLogger(EventServices.class.getName()).log(Level.SEVERE, null, ex);
     }
     return event;
+}
+       public List<Event> getAll() {
+    List<Event> list = new ArrayList<>();
+    try {
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery("SELECT * FROM Event");
+        
+        EventServices es = new EventServices();
+
+        while (rs.next()) {
+            
+            Event u = new Event(
+                rs.getInt("idEvent"),
+                     rs.getString("titreEvent"),
+                    rs.getString("nomCoach"),
+                    rs.getString("typeEvent"),
+                    rs.getString("adresseEvent"),
+                     rs.getDate("dateEvent").toLocalDate(),
+                rs.getDouble("PrixEvent"),
+                rs.getString("imgEvent")
+            );
+            list.add(u);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+
+    return list;
 }
 }

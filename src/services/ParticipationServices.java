@@ -127,5 +127,34 @@ public class ParticipationServices {
             throw new RuntimeException(ex);
         }
 }
+ public List<Participation> getAll() {
+    List<Participation> list = new ArrayList<>();
+    try {
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery("SELECT * FROM Participation");
+        
+        EventServices es = new EventServices();
+
+        while (rs.next()) {
+            int idEvent = rs.getInt("idEvent");
+            Event event = es.getEventById(idEvent);
+            
+            Participation u = new Participation(
+                rs.getInt("idPart"),
+                event,
+                rs.getDate("DatePart").toLocalDate(),
+                rs.getString("Nom"),
+                rs.getString("Prenom"),
+                rs.getString("Ntel")
+            );
+            list.add(u);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+
+    return list;
+}
+
 
 }

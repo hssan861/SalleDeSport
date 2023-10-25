@@ -57,31 +57,27 @@ public class ModifierPartFXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         tfNom.setText(ParticipationFXMain.part.getNom());
-      tfPrenom.setText(ParticipationFXMain.part.getPrenom());
-       tfNTEL.setText(ParticipationFXMain.part.getNtel());
-       
-       tfDatePart.setValue(ParticipationFXMain.part.getDatePart());
-         tfEvent.getItems().clear();
-    tfEvent.getItems().add(event);
-    tfEvent.getSelectionModel().selectFirst();
-     EventServices es = new EventServices();
+
+
+  tfNom.setText(ParticipationFXMain.part.getNom());
+    tfPrenom.setText(ParticipationFXMain.part.getPrenom());
+    tfNTEL.setText(ParticipationFXMain.part.getNtel());
+    tfDatePart.setValue(ParticipationFXMain.part.getDatePart());
+
+    EventServices es = new EventServices();
     List<Event> eventList = es.afficherEvent();
     ObservableList<Event> items = FXCollections.observableArrayList(eventList);
+
+    // Clear the ComboBox and set its items to the 'items' list
+    tfEvent.getItems().clear();
     tfEvent.setItems(items);
+
+    // Optionally, you can set a default selection
+    tfEvent.getSelectionModel().selectFirst();
 
 
     }    
 
-    @FXML
-    private void retourHome(ActionEvent event) {
-//   tfNom.getScene().getWindow().hide();
-//              Parent root = FXMLLoader.load(getClass().getResource("HomeFXML.fxml"));
-//                Stage mainStage = new Stage();
-//                Scene scene = new Scene(root);
-//                mainStage.setScene(scene);
-//                mainStage.show(); 
-    }
     
 
     @FXML

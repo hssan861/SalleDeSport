@@ -5,6 +5,7 @@
  */
 package gui;
 
+import API.SendSMS;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.Event;
 import services.EventServices;
+import services.TwilioService;
 
 /**
  *
@@ -26,7 +28,7 @@ import services.EventServices;
  */
 public class EvenementFXMain extends Application {
     static Event event = new Event();
-    static Event ee = new Event();
+    //static Event ee = new Event();
     EventServices es = new EventServices();
      
     @Override
@@ -42,7 +44,7 @@ public class EvenementFXMain extends Application {
             System.out.println(ex.getMessage());
         }*/
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("AfficherEventFXML.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("afficherEventFXML.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("affichage");
@@ -52,7 +54,6 @@ public class EvenementFXMain extends Application {
             System.out.println(ex.getMessage());
         }
       
-
     }
 
     /**

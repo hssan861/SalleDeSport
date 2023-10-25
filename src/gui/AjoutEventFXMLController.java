@@ -6,9 +6,15 @@
 package gui;
 
 //import java.awt.Image;
+import Tools.Statics;
+import API.GenerateQRCode;
+import com.itextpdf.kernel.geom.Path;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Date;
@@ -64,8 +70,8 @@ public class AjoutEventFXMLController implements Initializable {
     private String url_image=null;
     private File file = null;
 private Image image = null;
-    @FXML
-    private ImageView logo;
+Event event = new Event();
+
 
     /**
      * Initializes the controller class.
@@ -80,9 +86,10 @@ private Image image = null;
           double prix = Double.parseDouble(tfPrix.getText());
     EventServices sp = new EventServices();
     LocalDate date =tfDate.getValue();
-    String imagePath = "C:\\Users\\rayen\\OneDrive\\Bureau\\Fun_run_people_logo-removebg-preview.png";
+    String imagePath = "C:\\Users\\rayen\\OneDrive\\Bureau\\projetDev\\SalleDeSport_event\\src\\images\\Yoga.jpg";
     Image image = new Image(new File(imagePath).toURI().toString());
-     try {
+      
+   
             Alert alert;
 
             if (tfTitre.getText().isEmpty()
@@ -108,18 +115,41 @@ private Image image = null;
                 alert.setContentText("prix invalide");
                 alert.showAndWait();
             }else {
-        sp.ajouterEvent(new Event(tfTitre.getText(), tfCoach.getText(),tfType.getText(),tfAdresse.getText(),date ,prix,imagePath));
+                   if(file!=null){
+                       imagePath=file.getAbsolutePath();
+                       
+                       
+                   } else{
+                       alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("image vide");
+                alert.showAndWait();
+                       return;
+                   }
+                  
+
+                     Event eve = new Event(tfTitre.getText(), tfCoach.getText(),tfType.getText(),tfAdresse.getText(),date ,prix,imagePath);
+        sp.ajouterEvent(eve);
+       
             alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Successfully Added!");
                 alert.showAndWait();
 
-            }
-
+            
+     String outputPath = "C:\\Users\\rayen\\OneDrive\\Bureau\\eventQR\\Code"+eve.getTitreEvent()+".png";
+       try {
+            GenerateQRCode.generateQRcode(eve, outputPath);
+            System.out.println("QR code generated successfully.");
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Failed to generate QR code: " + e.getMessage());
+             e.printStackTrace();
         }
+       
+         }
+            
     }
 
     @FXML
@@ -149,11 +179,13 @@ private Image image = null;
         file = open.showOpenDialog(root1.getScene().getWindow());
 
         if (file != null) {
-            String imagePath = "C:\\Users\\rayen\\OneDrive\\Bureau\\Fun_run_people_logo-removebg-preview.png";
+            String imagePath = "C:\\Users\\rayen\\OneDrive\\Bureau\\projetDev\\SalleDeSport_event\\src\\images\\Yoga.jpg";
 Image image = new Image(new File(imagePath).toURI().toString());
             image = new Image(file.toURI().toString(), 200, 119, false, true) {};
             url_image= file.getName();
             tfImage.setImage(image);
         }
 }
+    
+
  }

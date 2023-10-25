@@ -49,7 +49,6 @@ public class ModifierEventFXMLController implements Initializable {
     private TextField tfAdresse;
     @FXML
     private TextField tfPrix;
-    @FXML
     private ImageView tfImage;
     @FXML
     private DatePicker tfDate;
@@ -64,6 +63,10 @@ private Image image = null;
     private Button bb;
     @FXML
     private AnchorPane root2;
+    @FXML
+    private Button RetourHome;
+    @FXML
+    private ImageView tfImageMod;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
               tfTitre.setText(EvenementFXMain.event.getTitreEvent());
@@ -71,14 +74,15 @@ private Image image = null;
        tfType.setText(EvenementFXMain.event.getTypeEvent());
        tfAdresse.setText(EvenementFXMain.event.getAdresseEvent());
        double prix = EvenementFXMain.event.getPrixEvent();
-        
-
-       tfDate.setValue(EvenementFXMain.event.getDateEvent());
-
-    LocalDate date = tfDate.getValue();
+       LocalDate date = tfDate.getValue();
+      tfDate.setValue(EvenementFXMain.event.getDateEvent());
        tfPrix.setText(Double.toString(prix));
        EvenementFXMain.event.setDateEvent(date);
-        //tfImage.setImage(EvenementFXMain.event.getImgEvent());
+    String imagePath = EvenementFXMain.event.getImgEvent(); 
+   // System.out.println("Image Path: " + imagePath);
+    Image image = new Image(new File(imagePath).toURI().toString());       
+       tfImageMod.setImage(image);
+       //System.out.println("Image: " + image);
            }    
 
 
@@ -100,13 +104,18 @@ private Image image = null;
         tfAdresse.setText("");
         tfDate.setValue(null);
         tfPrix.setText("");
-        tfImage.setImage(null);
+        tfImageMod.setImage(null);
     }
 
     @FXML
-    private void ModifierEv(ActionEvent event) throws IOException {
+    
+        private void ModifierEv(ActionEvent event) throws IOException {
+              
+
            double prix = Double.parseDouble(tfPrix.getText());
  LocalDate date = tfDate.getValue();
+ String imagePath = EvenementFXMain.event.getImgEvent();
+    Image image = new Image(new File(imagePath).toURI().toString());
         try {
             Alert alert;
 
@@ -133,19 +142,22 @@ private Image image = null;
                 alert.setContentText("prix invalide");
                 alert.showAndWait();
             }else {
- 
-String imagePath = "C:\\Users\\rayen\\OneDrive\\Bureau\\Fun_run_people_logo-removebg-preview.png";
-    Image image = new Image(new File(imagePath).toURI().toString());
-    es.modifierEvent(new Event(
-        EvenementFXMain.ee.getIdEvent(),
-        tfTitre.getText(),
-        tfCoach.getText(),
-        tfType.getText(),
-        tfAdresse.getText(),
-        date,
-        prix,
-        imagePath
-    ));
+                    if(file!=null){
+                       imagePath=file.getAbsolutePath();
+                       
+                       
+                   } else{
+                       alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("image vide");
+                alert.showAndWait();
+                       return;
+                   }
+
+    
+    Event ev = new Event (EvenementFXMain.event.getIdEvent(),tfTitre.getText(),tfCoach.getText(), tfType.getText(),tfAdresse.getText(),date, prix, imagePath);
+    es.modifierEvent(ev);
     
     tfTitre.getScene().getWindow().hide();
     Parent root = FXMLLoader.load(getClass().getResource("AfficherEventFXML.fxml"));
@@ -157,8 +169,9 @@ String imagePath = "C:\\Users\\rayen\\OneDrive\\Bureau\\Fun_run_people_logo-remo
                 } }catch (Exception e) {
    
     e.printStackTrace();
+    
 }
-    }   
+}  
 
     @FXML
     private void loadImg2(ActionEvent event) {
@@ -166,13 +179,17 @@ String imagePath = "C:\\Users\\rayen\\OneDrive\\Bureau\\Fun_run_people_logo-remo
         file = open.showOpenDialog(root2.getScene().getWindow());
 
         if (file != null) {
-            String imagePath = "C:\\Users\\rayen\\OneDrive\\Bureau\\Fun_run_people_logo-removebg-preview.png";
+            String imagePath = EvenementFXMain.event.getImgEvent();
 Image image = new Image(new File(imagePath).toURI().toString());
             image = new Image(file.toURI().toString(), 200, 119, false, true) {};
             url_image= file.getName();
-            tfImage.setImage(image);
+            tfImageMod.setImage(image);
         }
     }
+   
+
+
+   
 }   
         
     
