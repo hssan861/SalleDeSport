@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.SalleDeSport_Offer_Reservation.CUI.User_Reservation_FXMLController">
+   <children>
+      <Pane layoutX="-16.0" layoutY="-9.0" prefHeight="98.0" prefWidth="842.0" style="-fx-background-color: #005e35;">
+         <children>
+            <Text fill="WHITE" layoutX="285.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Affiche Reservation" wrappingWidth="334.6897430419922">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <TableView fx:id="tableView_Reservation" layoutX="133.0" layoutY="285.0" prefHeight="96.0" prefWidth="554.0">
+        <columns>
+          <TableColumn minWidth="0.0" prefWidth="107.17021942138672" text="id_Reservation" />
+          <TableColumn prefWidth="118.82975769042969" text="date_Reservation" />
+            <TableColumn minWidth="0.0" prefWidth="98.00021362304688" text="Code_Promo" />
+            <TableColumn prefWidth="107.8582763671875" text="id_User" />
+            <TableColumn prefWidth="118.45404052734375" text="Titre_Offer" />
+        </columns>
+      </TableView>
+      <Button fx:id="ModifierReservation" layoutX="203.0" layoutY="487.0" mnemonicParsing="false" onAction="#goToModoer" prefHeight="49.0" prefWidth="142.0" text="Modifier" textFill="#1b7200">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="SuppReservation" layoutX="496.0" layoutY="492.0" mnemonicParsing="false" onAction="#GoToSuppReservation" prefHeight="49.0" prefWidth="143.0" text="Supprimer" textFill="#1b7200">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="652.0" layoutY="699.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="149.0" text="Imprimer" textFill="#1b7200">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="42.0" layoutY="696.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="149.0" text="Retour" textFill="#1b7200">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="Afficher" layoutX="55.0" layoutY="200.0" mnemonicParsing="false" onAction="#ActualiserAction" prefHeight="49.0" prefWidth="142.0" text="Actualiser" textFill="#1b7200">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="783.0" prefWidth="1377.0" styleClass="affiche" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.SalleDeSport_Offer_Reservation.CUI.List_Offres_FXMLController">
+   <children>
+      <ListView fx:id="list_view_affiche" layoutX="550.0" layoutY="413.0" prefHeight="332.0" prefWidth="287.0" stylesheets="@../css/style.css" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="540.0" AnchorPane.topAnchor="413.0" />
+      <Button fx:id="ReserverOffer" layoutX="1147.0" layoutY="542.0" mnemonicParsing="false" onAction="#GoToAjouterReservation" prefHeight="22.0" prefWidth="131.0" styleClass="search-box" stylesheets="@../css/tableView.css" text="Rserver" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="retour" layoutX="1203.0" layoutY="681.0" mnemonicParsing="false" onAction="#GoToAcueil" prefHeight="39.0" prefWidth="140.0" styleClass="search-box" stylesheets="@../css/tableView.css" text="Retour" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="AfficheOffer" layoutX="365.0" layoutY="504.0" mnemonicParsing="false" onAction="#ActualiseOffer" prefHeight="41.0" prefWidth="111.0" styleClass="search-box" stylesheets="@../css/tableView.css" text="Actualiser" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="Tf_CodePromo" layoutX="907.0" layoutY="547.0" />
+      <Text fill="WHITE" layoutX="943.0" layoutY="530.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Code Promo" wrappingWidth="95.7955255661202">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Text>
+      <TextField fx:id="Tf_idUser" layoutX="1042.0" layoutY="401.0" />
+      <Label layoutX="22.0" layoutY="174.0" prefHeight="29.0" prefWidth="177.0" text="Recently Added" textFill="#1b95b2">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="206.0" layoutY="180.0" prefHeight="206.0" prefWidth="1072.0" styleClass="transparent" stylesheets="@../css/style.css">
+         <content>
+            <HBox fx:id="carLayout" alignment="CENTER" prefHeight="190.0" prefWidth="1785.0" spacing="20.0" stylesheets="@../css/style.css">
+               <styleClass>
+                  <String fx:value="transparent" />
+               </styleClass>
+            </HBox>
+         </content>
+      </ScrollPane>
+      <HBox layoutX="32.0" layoutY="20.0" prefHeight="74.0" prefWidth="333.0" />
+      <TextField fx:id="tx_Recherche" layoutX="934.0" layoutY="118.0" onAction="#Recherche" prefHeight="32.0" prefWidth="168.0" promptText="search" style="-fx-border-radius: 30;" />
+      <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="882.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/R%20(1).png" />
+         </image>
+      </ImageView>
+      <Label fx:id="err_CodePromo" layoutX="972.0" layoutY="574.0" prefHeight="17.0" prefWidth="122.0" text="Code Promo no valide" textFill="RED" />
+      <Label layoutX="336.0" layoutY="439.0" prefHeight="29.0" prefWidth="177.0" text="Liste Des Offer" textFill="#1b95b2">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Text fill="WHITE" layoutX="924.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selectionner un Offer Pour Reserver" wrappingWidth="300.53704167940145">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="934.0" layoutY="620.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scanner le code" wrappingWidth="140.0">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="imgqrcode" fitHeight="113.0" fitWidth="90.0" layoutX="943.0" layoutY="625.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

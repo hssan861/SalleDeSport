@@ -1,0 +1,5 @@
+ID_Offer,Title_Offer,Description,Prix,Date_Debut,Date_fin
+1,Offer_Special COUPEL,Profiter Notre Offer pour les couples,300.0,2023-09-30,2023-09-30
+2,Offer_Special BLACK DAYS,Profiter Notre Offer pour les maries,300.0,2023-09-30,2023-10-30
+3,Offer_Special SAINT_VALENTINT,Profiter Notre Offer pour les enfants,500.0,2023-09-30,2023-09-30
+10,Offer_Special BLACK_FRIDAY,Offer pour les enfants,200.0,2023-10-04,2023-12-10
