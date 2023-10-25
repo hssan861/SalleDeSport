@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="705.0" prefWidth="922.0" style="-fx-background-color: white;" styleClass="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierProduitController">
+    <stylesheets>
+        <URL value="@application.css" />
+    </stylesheets>
+    <children>
+        <VBox alignment="CENTER" layoutX="222.0" layoutY="232.0" prefHeight="382.0" prefWidth="436.0">
+         <children>
+               
+                                                      <GridPane alignment="CENTER" hgap="10" prefHeight="370.0" prefWidth="443.0" style="-fx-background-color: black;" vgap="10">
+      
+                                                       <Label text="Titre:" textFill="#0ec914" GridPane.rowIndex="5" />
+                   <TextField fx:id="titreField" promptText="Titre" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      
+                                                       <Label text="Image:" textFill="#0ec914" GridPane.rowIndex="6" />
+                   
+                                                          <Label text="Date:" textFill="#0ec914" GridPane.rowIndex="7" />
+                   <DatePicker fx:id="tfdate" promptText="Date" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                   
+                                                          <Label text="Description:" textFill="#0ec914" GridPane.rowIndex="8" />
+                   <TextField fx:id="descriptionField" promptText="Description" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                   
+                                                          <Label text="Catégorie:" textFill="#0ec914" GridPane.rowIndex="9" />
+                   <TextField fx:id="categorieField" prefHeight="44.0" prefWidth="243.0" promptText="Catégorie" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      
+                                                       <ImageView fx:id="image_view" fitHeight="86.0" fitWidth="194.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                   <Button fx:id="insert_image" mnemonicParsing="false" onAction="#addImage" prefHeight="41.0" prefWidth="194.0" text="Insert Image" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                   
+                                                          <columnConstraints>
+                       <ColumnConstraints />
+                       <ColumnConstraints />
+                       <ColumnConstraints />
+                   </columnConstraints>
+                   <rowConstraints>
+                       <RowConstraints />
+                       <RowConstraints />
+                       <RowConstraints />
+                       <RowConstraints />
+                       <RowConstraints />
+                       <RowConstraints />
+                       <RowConstraints />
+                       <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints maxHeight="27.0" minHeight="27.0" prefHeight="27.0" />
+                  <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                   </rowConstraints>
+               </GridPane>
+         </children>
+        </VBox>
+      <ImageView fx:id="imageView" fitHeight="247.0" fitWidth="215.0" layoutX="658.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane prefHeight="705.0" prefWidth="206.0" style="-fx-background-color: green;" styleClass="menu">
+         <children>
+                
+                     <Button fx:id="btnmodifier" layoutX="37.0" layoutY="564.0" onAction="#modifPrdt" prefHeight="38.0" prefWidth="132.0" style="-fx-background-color: black;" text="Modifier Produit" textFill="#0ec914" />
+            <ImageView fitHeight="192.0" fitWidth="176.0" layoutX="15.0" layoutY="167.0">
+               <image>
+                  <Image url="@385564839_742907983963047_7604035126350803380_n.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="retour" layoutX="37.0" layoutY="621.0" mnemonicParsing="false" onAction="#retour" prefHeight="26.0" prefWidth="132.0" style="-fx-background-color: black;" text="Retour" textFill="#0ec914" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="5.0" layoutY="18.0" prefHeight="150.0" prefWidth="206.0" styleClass="title-label" text="Gestion E-commerce" textFill="#0ec914">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+         <Label layoutX="309.0" layoutY="46.0" prefHeight="38.0" prefWidth="194.0" style="-fx-font-size: 18px;" text="Modifier un Produit" textFill="#0ec914">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="6.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="133.0" fitWidth="206.0" layoutX="690.0" layoutY="2.0">
+         <image>
+            <Image url="@380428727_1040086700454796_151680136043784588_n.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

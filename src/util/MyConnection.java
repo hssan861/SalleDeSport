@@ -5,23 +5,25 @@
  */
 package util;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+
 /**
  *
- * @author rayen
+ * @author USER
  */
 public class MyConnection {
-     //DB Credentials
-    final String URL = "jdbc:mysql://localhost:3306/salledesport";
+    final String URL = "jdbc:mysql://localhost:3306/gym"; 
     final String USR = "root";
     final String PWD = "";
     
     //var
-    java.sql.Connection cnx;
+    Connection cnx;
     static MyConnection instance;
 
     private MyConnection() {
@@ -40,11 +42,8 @@ public class MyConnection {
         return instance;
     }
 
-    public java.sql.Connection getCnx() {
+    public Connection getCnx() {
         return cnx;
     }
-    
-    
-    
     
 }

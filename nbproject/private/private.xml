@@ -3,18 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/services/ParticipationServices.java</file>
-            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/AffichageEventUserController.java</file>
-            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/AjoutEventFXMLController.java</file>
-            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/ParticipationFXMain.java</file>
-            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/ModifierEventFXMLController.java</file>
-            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/Tools/Statics.java</file>
-            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/services/EventServices.java</file>
-            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/models/Participation.java</file>
-            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/ReserverFXMLController.java</file>
-            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/AfficherEventFXMLController.java</file>
-            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/EvenementFXMain.java</file>
-            <file>file:/C:/Users/rayen/OneDrive/Bureau/projetDev/SalleDeSport_event/src/gui/AfficherPartFXMLController.java</file>
+            <file>file:/C:/Users/rayen/OneDrive/Bureau/Intégration/Hssan/src/gui/choosePrdController.java</file>
+            <file>file:/C:/Users/rayen/OneDrive/Bureau/Intégration/Hssan/src/gui/signature.png</file>
+            <file>file:/C:/Users/rayen/OneDrive/Bureau/Intégration/Hssan/src/gui/choosePrd.fxml</file>
+            <file>file:/C:/Users/rayen/OneDrive/Bureau/Intégration/Hssan/src/gui/AfficheOneCommande.java</file>
+            <file>file:/C:/Users/rayen/OneDrive/Bureau/Intégration/Hssan/src/gym/mainFx.java</file>
+            <file>file:/C:/Users/rayen/OneDrive/Bureau/Intégration/Hssan/src/gui/signature.jpg</file>
+            <file>file:/C:/Users/rayen/OneDrive/Bureau/Intégration/Hssan/src/gui/AffichePrdC.fxml</file>
         </group>
     </open-files>
 </project-private>

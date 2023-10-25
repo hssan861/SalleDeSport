@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1000.0" style="-fx-background-color: white;" styleClass="affichage" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.choosePrdController">
+   <stylesheets>
+      <URL value="@application.css" />
+   </stylesheets>
+   <children>
+      <AnchorPane layoutX="-3.0" layoutY="-2.0" prefHeight="705.0" prefWidth="214.0" style="-fx-background-color: green;" styleClass="affichage">
+         <children>
+            <Label layoutX="6.0" layoutY="14.0" prefHeight="150.0" prefWidth="206.0" styleClass="title-label" text="Gestion E-commerce" textFill="#0ec914">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnval" layoutX="54.0" layoutY="619.0" mnemonicParsing="false" onAction="#validerp" prefHeight="35.0" prefWidth="105.0" style="-fx-background-color: black;" text="Valider" textFill="#0ec914" />
+            <ImageView fitHeight="192.0" fitWidth="176.0" layoutX="19.0" layoutY="271.0">
+               <image>
+                  <Image url="@385564839_742907983963047_7604035126350803380_n.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="99.0" fitWidth="165.0" layoutX="678.0" layoutY="2.0">
+         <image>
+            <Image url="@380428727_1040086700454796_151680136043784588_n.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="369.0" layoutY="52.0" prefHeight="39.0" prefWidth="282.0" styleClass="title-label" text="Affichage de produits" textFill="#0ec914">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnafficher" layoutX="369.0" layoutY="624.0" mnemonicParsing="false" onAction="#aff" style="-fx-background-color: black;" text="Afficher Produits" textFill="#0ec914" />
+      <Button fx:id="Options" layoutX="649.0" layoutY="624.0" mnemonicParsing="false" onAction="#Options" style="-fx-background-color: black;" text="Options" textFill="#0ec914" />
+      <Button fx:id="ajouterproduit" layoutX="517.0" layoutY="624.0" mnemonicParsing="false" onAction="#ajouterproduit" style="-fx-background-color: black;" text="Ajouter Produit" textFill="#0ec914" />
+      <Button fx:id="commande" layoutX="742.0" layoutY="624.0" mnemonicParsing="false" onAction="#commande" style="-fx-background-color: black;" text="Aficher les Commandes" textFill="#0ec914" />
+      <ListView fx:id="table_view1" layoutX="256.0" layoutY="253.0" prefHeight="337.0" prefWidth="574.0" style="-fx-background-color: black;" />
+      <Button fx:id="Statistique" layoutX="230.0" layoutY="624.0" mnemonicParsing="false" onAction="#Statistique" style="-fx-background-color: black;" text="Statistique" textFill="#0ec914" />
+   </children>
+</AnchorPane>

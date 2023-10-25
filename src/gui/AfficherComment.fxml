@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="479.0" prefWidth="700.0" stylesheets="@CssStyle1.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherCommentController">
+   <children>
+      <ListView fx:id="lvaffichercomment" layoutX="11.0" layoutY="22.0" prefHeight="391.0" prefWidth="535.0" />
+      <Button fx:id="mm" layoutX="554.0" layoutY="179.0" mnemonicParsing="false" onAction="#supprimercomment" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #1b95b2;" text="Supprimer" textFill="WHITE" />
+      <Button layoutX="556.0" layoutY="227.0" mnemonicParsing="false" onAction="#modifiercomment" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #1b95b2;" text="Modifier" textFill="WHITE" />
+      <Button fx:id="aa" layoutX="556.0" layoutY="129.0" mnemonicParsing="false" onAction="#ajoutercomment" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #1b95b2;" text="Ajouter" textFill="WHITE" />
+      <Button layoutX="554.0" layoutY="269.0" mnemonicParsing="false" onAction="#Posts" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #1b95b2;" text="Posts" textFill="WHITE" fx:id="xxx" />
+   </children>
+</AnchorPane>

@@ -44,7 +44,7 @@ public class EvenementFXMain extends Application {
             System.out.println(ex.getMessage());
         }*/
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("afficherEventFXML.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("AfficherReservationFXML.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("affichage");
