@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@CssStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModifierPostController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="root3" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1100.0">
+         <children>
+            <Label layoutX="206.0" layoutY="213.0" text="Description" textFill="#f2bc74" />
+            <Label layoutX="209.0" layoutY="390.0" text="Image" textFill="#f2bc74" />
+            <Button fx:id="imagemodifierbutton" layoutX="574.0" layoutY="386.0" mnemonicParsing="false" onAction="#loadmod" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1b95b2;" text="Choisir un fichier" textFill="WHITE" />
+            <Button fx:id="pp" layoutX="462.0" layoutY="517.0" mnemonicParsing="false" onAction="#Annulermodifierp" style="-fx-background-color: #1b95b2;" text="Annuler" textFill="WHITE" />
+            <Button layoutX="547.0" layoutY="517.0" mnemonicParsing="false" onAction="#modifierp" style="-fx-background-color: #1b95b2;" text="Modifier" textFill="WHITE" />
+            <Label layoutX="278.0" layoutY="213.0" prefHeight="17.0" prefWidth="25.0" text="*" textFill="#d30d0d" />
+            <Label layoutX="253.0" layoutY="390.0" text="*" textFill="#c90e0e" />
+            <TextField fx:id="tfdescription" layoutX="321.0" layoutY="201.0" prefHeight="119.0" prefWidth="220.0" />
+            <ImageView fx:id="tfimagee" fitHeight="138.0" fitWidth="200.0" layoutX="321.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="errorMessageLabel" layoutX="162.0" layoutY="521.0" textFill="RED" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

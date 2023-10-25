@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" styleClass="root" stylesheets="@../StyleCss/Ajouter.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterReservationFXMLController">
+    <children>
+        <ComboBox fx:id="utilisateurComboBox" layoutX="626.0" layoutY="150.0" prefWidth="200.0" promptText="utilisateur" />
+        <ComboBox fx:id="activitesComboBox" layoutX="585.0" layoutY="351.0" prefWidth="200.0" promptText="Sélectionner une activité" />
+        <Button fx:id="goAfficher" layoutX="897.0" layoutY="541.0" mnemonicParsing="false" onAction="#goAfficher" prefHeight="30.0" prefWidth="174.0" style="-fx-background-color: #1b95b2;" styleClass="add-btn" stylesheets="@../../cssStyle/dashboardDesign.css" text="Afficher Reservation" textFill="#ffffff" />
+        <Button fx:id="ajouter" layoutX="54.0" layoutY="266.0" onAction="#AjouterReservation" prefHeight="30.0" prefWidth="161.0" style="-fx-background-color: #1b95b2;" styleClass="add-btn" stylesheets="@../../cssStyle/dashboardDesign.css" text="Ajouter Reservation" textFill="#ffffff" />
+      <ListView fx:id="afficheracitiviter" layoutX="256.0" layoutY="195.0" prefHeight="311.0" prefWidth="588.0" styleClass="list-cell" stylesheets="@../StyleCss/listview.css" />
+      <Label alignment="CENTER" layoutX="429.0" layoutY="46.0" prefHeight="43.0" prefWidth="266.0" text="Reserver une Activitée" textFill="#377da9">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

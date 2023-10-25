@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="494.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherPartFXMLController">
+   <children>
+      <AnchorPane layoutX="6.0" layoutY="1.0" prefHeight="600.0" prefWidth="1100.0" styleClass="root" stylesheets="@affcss.css">
+         <children>
+            <TextField fx:id="rechField" layoutX="250.0" layoutY="44.0" prefHeight="26.0" prefWidth="250.0" />
+            <Button fx:id="Brech" layoutX="570.0" layoutY="50.0" mnemonicParsing="false" onAction="#rechercher" style="-fx-background-color: #1b95b2;" text="Rechercher" textFill="WHITE" />
+            <Button layoutX="28.0" layoutY="267.0" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #1b95b2;" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="28.0" layoutY="343.0" mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #1b95b2;" text="Modifier" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="28.0" layoutY="409.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #1b95b2;" text="Supprimer" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <ListView fx:id="LvPart" layoutX="222.0" layoutY="158.0" prefHeight="402.0" prefWidth="715.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

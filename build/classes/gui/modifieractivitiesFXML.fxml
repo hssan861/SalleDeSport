@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" styleClass="root" stylesheets="@../StyleCss/Ajouter.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifieractivitiesFXMLController">
+    <children>
+        <!-- Add your UI elements directly to the AnchorPane -->
+        <Label layoutX="169.0" layoutY="175.0" text="Title:" textFill="WHITE" />
+        <TextField fx:id="titleField" layoutX="208.0" layoutY="171.0" />
+        
+        <Label layoutX="275.0" layoutY="291.0" text="Coach:" textFill="WHITE" />
+        <ComboBox fx:id="coachComboBox" layoutX="324.0" layoutY="287.0" prefHeight="26.0" prefWidth="114.0" />
+
+        <Label layoutX="467.0" layoutY="291.0" text="Category:" textFill="WHITE" />
+        <ComboBox fx:id="categoryComboBox" layoutX="534.0" layoutY="287.0" prefHeight="26.0" prefWidth="114.0" />
+
+        <Label layoutX="219.0" layoutY="230.0" text="Start Date:" textFill="WHITE" />
+        <DatePicker fx:id="startDatePicker" layoutX="293.0" layoutY="226.0" />
+
+        <Label layoutX="558.0" layoutY="230.0" text="End Date:" textFill="WHITE" />
+        <DatePicker fx:id="endDatePicker" layoutX="628.0" layoutY="226.0" />
+
+        <Label layoutX="411.0" layoutY="175.0" text="Description:" textFill="WHITE" />
+        <TextField fx:id="descriptionField" layoutX="475.0" layoutY="171.0" />
+
+        <Label layoutX="716.0" layoutY="175.0" text="Salle:" textFill="WHITE" />
+        <TextField fx:id="salleField" layoutX="757.0" layoutY="171.0" />
+
+        <Button layoutX="899.0" layoutY="523.0" mnemonicParsing="false" onAction="#modifierActivities" prefHeight="38.0" prefWidth="135.0" styleClass="add-btn" stylesheets="@../../cssStyle/dashboardDesign.css" text="Entregistrer" />
+        <Button fx:id="goAfficher" layoutX="57.0" layoutY="524.0" mnemonicParsing="false" onAction="#AfficherActivities" prefHeight="37.0" prefWidth="158.0" styleClass="add-btn" stylesheets="@../../cssStyle/dashboardDesign.css" text="Afficher Activiter" />
+      <Label alignment="CENTER" layoutX="429.0" layoutY="46.0" prefHeight="43.0" prefWidth="243.0" text="Modifier Activité" textFill="#377da9">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

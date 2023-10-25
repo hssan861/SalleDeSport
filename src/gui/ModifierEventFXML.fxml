@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierEventFXMLController">
+   <children>
+      <AnchorPane fx:id="root2" layoutY="320.0" prefHeight="197.0" prefWidth="878.0" />
+      <Pane layoutY="-15.0" prefHeight="654.0" prefWidth="1146.0" styleClass="root" stylesheets="@cssStyle.css">
+         <children>
+            <Label layoutX="67.0" layoutY="249.0" prefHeight="35.0" prefWidth="166.0" text="Titre D'évenement :" textFill="#f2bc74">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfTitre" layoutX="237.0" layoutY="255.0" promptText="titre" />
+            <Label layoutX="99.0" layoutY="310.0" prefHeight="35.0" prefWidth="138.0" text="Nom du Coach :" textFill="#f2bc74">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfCoach" layoutX="237.0" layoutY="315.0" promptText="Coach" />
+            <Label layoutX="67.0" layoutY="367.0" prefHeight="35.0" prefWidth="158.0" text="Type D'evenement :" textFill="#f2bc74">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfType" layoutX="237.0" layoutY="372.0" promptText="type" />
+            <Label layoutX="505.0" layoutY="250.0" prefHeight="35.0" prefWidth="180.0" text="Adresse D'evenement :" textFill="#f2bc74">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfAdresse" layoutX="721.0" layoutY="255.0" prefHeight="25.0" prefWidth="158.0" promptText="adresse" />
+            <Label layoutX="631.0" layoutY="310.0" prefHeight="35.0" prefWidth="66.0" text="Date :" textFill="#f2bc74">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="tfDate" layoutX="721.0" layoutY="315.0" prefHeight="26.0" prefWidth="158.0" promptText="date" />
+            <Label layoutX="639.0" layoutY="368.0" prefHeight="35.0" prefWidth="66.0" text="Prix :" textFill="#f2bc74">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfPrix" layoutX="721.0" layoutY="372.0" prefHeight="26.0" prefWidth="158.0" promptText="prix" />
+            <Button layoutX="691.0" layoutY="578.0" mnemonicParsing="false" onAction="#clearEvents" prefHeight="37.0" prefWidth="118.0" style="-fx-background-color: #1b95b2;" text="Effacer" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="bb" layoutX="975.0" layoutY="578.0" mnemonicParsing="false" onAction="#AfficherEv" prefHeight="37.0" prefWidth="118.0" style="-fx-background-color: #1b95b2;" text="Afficher" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="573.0" layoutY="498.0" mnemonicParsing="false" onAction="#loadImg2" style="-fx-background-color: #1b95b2;" text="Choisir fichier" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button layoutX="835.0" layoutY="578.0" mnemonicParsing="false" onAction="#ModifierEv" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: #1b95b2;" text="Enregistrer " textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Label layoutX="245.0" layoutY="505.0" prefHeight="35.0" prefWidth="66.0" text="Image :" textFill="#f2bc74">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Pane layoutX="323.0" layoutY="429.0" prefHeight="138.0" prefWidth="180.0" />
+            <Button fx:id="RetourHome" layoutX="1133.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: #1b95b2;" text="X">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="tfImageMod" fitHeight="149.0" fitWidth="203.0" layoutX="343.0" layoutY="436.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

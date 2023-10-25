@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierReservationFXMLController">
+    <children>
+        <Text layoutX="200.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réservation">
+            <font>
+                <Font size="25.0" />
+            </font>
+        </Text>
+        <ComboBox fx:id="utilisateurComboBox" layoutX="200.0" layoutY="120.0" prefWidth="200.0" promptText="Sélectionner un utilisateur" />
+        <ComboBox fx:id="activitesComboBox" layoutX="200.0" layoutY="160.0" prefWidth="200.0" promptText="Sélectionner une activité" />
+        <Button fx:id="ajouter" layoutX="250.0" layoutY="250.0" onAction="#ModifReservation" prefHeight="26.0" prefWidth="100.0" text="Enregistrer" style="-fx-background-color: #e19645;" textFill="#ffffff" />
+    </children>
+</AnchorPane>

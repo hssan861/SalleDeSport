@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherReservationFXMLController">
+    <children>
+      <AnchorPane prefHeight="600.0" prefWidth="1100.0" styleClass="root" stylesheets="@../StyleCss/Ajouter.css">
+         <children>
+            <ListView fx:id="lvactivite" layoutX="208.0" layoutY="131.0" prefHeight="338.0" prefWidth="606.0" styleClass="list-cell" stylesheets="@../StyleCss/listview.css" />
+            <Button layoutX="29.0" layoutY="259.0" mnemonicParsing="false" onAction="#modifierReservation" prefHeight="26.0" prefWidth="163.0" style="-fx-background-color: #1b95b2;" styleClass="add-btn" stylesheets="@../../cssStyle/dashboardDesign.css" text="modifier" textFill="#ffffff" />
+            <Button layoutX="29.0" layoutY="307.0" mnemonicParsing="false" onAction="#supprimerReservation" prefHeight="26.0" prefWidth="163.0" style="-fx-background-color: #1b95b2;" styleClass="add-btn" stylesheets="@../../cssStyle/dashboardDesign.css" text="supprimer" textFill="#ffffff" />
+            <Button fx:id="RA" layoutX="914.0" layoutY="552.0" mnemonicParsing="false" onAction="#retourajout" prefHeight="26.0" prefWidth="163.0" style="-fx-background-color: #1b95b2;" styleClass="add-btn" stylesheets="@../../cssStyle/dashboardDesign.css" text="Ajouter Reservation" textFill="#ffffff" />
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" layoutX="429.0" layoutY="46.0" prefHeight="43.0" prefWidth="243.0" text="Les Reservation" textFill="#377da9">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>  
+</AnchorPane>
