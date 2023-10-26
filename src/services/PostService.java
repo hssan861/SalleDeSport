@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -29,22 +30,20 @@ public class PostService {
     
         
     //var
-    Connection cnx = MyConnection.getInstance().getCnx();
+    private Connection cnx = MyConnection.getInstance().getCnx();
     
     
     //Add 
     public void ajouterPost(Post p){
-        String req = "INSERT INTO 'post'('id_user', 'description', 'image', 'date') VALUES (?,?,?)";
+        String req = "INSERT INTO post(description, image) VALUES (?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setInt(1, p.getIdUser());
-            ps.setString(2, p.getDescription());
-            ps.setString(3, p.getImage());
+            
+            ps.setString(1, p.getDescription());
+            ps.setString(2, p.getImage());
         
             
-           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-             String date = sdf.format(p.getDate());
-             ps.setString(6,date);
+          
             ps.executeUpdate();
             System.out.println("Post ajoutée avec succes!");
         } catch (SQLException ex) {
@@ -64,10 +63,10 @@ public class PostService {
             while (rs.next()) {
                 Post p = new Post();
                 p.setIdPost(rs.getInt("IdPost"));//(rs.getInt("id"));
-                p.setIdUser(rs.getInt("IdUser"));
+               
                 p. setDescription(rs.getString("Description"));
                 p.setImage(rs.getString("Image"));
-                p.setDate(rs.getDate("Date"));
+               
                 Posts.add(p);
             }
             
@@ -81,17 +80,15 @@ public class PostService {
      //Modifier
      public void modifierPost(Post p) {
           try {
-String sql = "UPDATE post SET  IdUser=?, Description=?, Image=?, Date=? WHERE idPost=?";
+String sql = "UPDATE post SET   Description=?, Image=?  WHERE idPost=?";
             PreparedStatement ps = cnx.prepareStatement(sql);
          
-            ps.setInt(1, p.getIdUser());
-            ps.setString(2, p.getDescription());
-            ps.setString(3, p.getImage());
+           
+            ps.setString(1, p.getDescription());
+            ps.setString(2, p.getImage());
             
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-             String date = sdf.format(p.getDate());
-             ps.setString(4,date);
-             ps.setInt(5,p.getIdPost());
+           
+             ps.setInt(3,p.getIdPost());
              
             ps.executeUpdate();
             System.out.println("Post Modifié avec succées");
@@ -101,17 +98,67 @@ String sql = "UPDATE post SET  IdUser=?, Description=?, Image=?, Date=? WHERE id
         }
      }
      //supprimer 
-     public void supprimerPost(int idPost) {
-            System.out.println(idPost);
+     public void supprimerPost(Post post) {
+            String req = "DELETE FROM `post` WHERE `idPost`=?";
                 try {
-            String req = "DELETE FROM Post WHERE 'idPost'="+idPost;
-            Statement stm = cnx.createStatement();
-            stm.executeUpdate(req);
+                    PreparedStatement ps = cnx.prepareStatement(req);
+                    ps.setInt(1,post.getIdPost());
+                   
+            
+            
+            ps.executeUpdate();
             System.out.println("Post supprimer avec succés");
+            
         } catch (SQLException ex) {
-            System.out.println(ex);
+            Logger.getLogger(PostService.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+     
+     
+     public Post getPostById(int idPost) {
+        Post post = null ;
+        String req = "SELECT * FROM post WHERE idPost = ?";
+        try {
+            PreparedStatement preparedStatement = cnx.prepareStatement(req);
+            preparedStatement.setInt(1, idPost);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                post = new Post();
+                post.setIdPost(resultSet.getInt("idPost"));
+               
+                post.setDescription(resultSet.getString("Description"));
+                post.setImage(resultSet.getString("Image"));
+                
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PostService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return post;
+    }
+
+public List<Post> getAll() {
+    List<Post> list = new ArrayList<>();
+    try {
+     
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery("SELECT * FROM post");
+
+        while (rs.next()) {
+            Post u = new Post(
+                    rs.getInt("idPost"),
+                    rs.getString("Description"),
+               
+                rs.getString("Image")
+            );
+            list.add(u);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+
+    return list;
+}
 
     
 }

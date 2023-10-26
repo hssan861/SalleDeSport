@@ -5,6 +5,7 @@
  */
 package models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -12,83 +13,63 @@ import java.util.Date;
  * @author lenovo
  */
 public class Comment {
+
     private int idC;
-    private int idPost;
-    private int idUser;
+    private Post post;
     private String content;
-    private Date date;
+    
 
     public Comment() {
         
     }
 
-    public Comment(int idPost, int idUser, String content, Date date) {
-        this.idPost = idPost;
-        this.idUser = idUser;
-        this.content = content;
-        this.date = date;
-    }
-    
-
-    
-
-    public Comment(int idC, int idPost, int idUser, String content, Date date) {
+    public Comment(int idC, Post post, String content) {
         this.idC = idC;
-        this.idPost = idPost;
-        this.idUser = idUser;
+        this.post = post;
         this.content = content;
-        this.date = date;
+    }
+
+   
+
+    public Comment(Post post, String content) {
+        this.post = post;
+        this.content = content;
     }
 
     public int getIdC() {
         return idC;
     }
 
-    public int getIdPost() {
-        return idPost;
-    }
-
-  
-
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
     public void setIdC(int idC) {
         this.idC = idC;
     }
-
-    public void setIdPost(int idPost) {
-        this.idPost = idPost;
+    
+    
+    
+    
+    public Post getPost() {
+        return post;
     }
 
-   
+    public void setPost(Post post) {
+        this.post = post;
+    }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+  
+    public String getContent() {
+        return content;
     }
 
     public void setContent(String content) {
         this.content = content;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     @Override
     public String toString() {
-        return "Comment{" + "idC=" + idC + ", idPost=" + idPost + ", idUser=" + idUser + ", content=" + content + ", date=" + date + '}';
+        return "Comment{" + "post=" + post + ", content=" + content + '}';
     }
+
     
-    
-    
+   
+     
 }
