@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="Vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="255.0" spacing="5.0" style="-fx-background-radius: 20;" styleClass="shadow" stylesheets="@../StyleCss/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CardListViewOfferController">
+   <children>
+      <VBox prefHeight="47.0" prefWidth="263.0">
+         <children>
+            <Label fx:id="name" prefHeight="45.0" prefWidth="268.0" text="           Offer_Special" textFill="#1b95b2">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Separator prefWidth="200.0" />
+      <VBox prefHeight="77.0" prefWidth="179.0" spacing="5.0">
+         <children>
+            <ImageView fx:id="imgOffer" fitHeight="77.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/couple.jpg" />
+               </image>
+            </ImageView>
+         </children>
+         <VBox.margin>
+            <Insets left="60.0" />
+         </VBox.margin>
+      </VBox>
+      <Separator prefWidth="200.0" />
+      <HBox prefHeight="41.0" prefWidth="263.0">
+         <children>
+            <Label fx:id="description" prefHeight="35.0" prefWidth="264.0" text="  Profiter Notre Offer speciale pour les coupel" />
+         </children>
+      </HBox>
+      <Separator prefHeight="20.0" prefWidth="263.0" />
+      <HBox prefHeight="26.0" prefWidth="263.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="87.0" text="  Prix :" textFill="#1b95b2">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label fx:id="label_Prix" prefHeight="17.0" prefWidth="265.0" text="                                            500" />
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <HBox prefHeight="22.0" prefWidth="263.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="109.0" text="  Date  Debut Offer :" textFill="#1b95b2">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_DateD" prefHeight="17.0" prefWidth="130.0" text="             17/05/2023" />
+         </children></HBox>
+      <Separator prefWidth="200.0" />
+      <HBox prefHeight="36.0" prefWidth="263.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="109.0" text="  Date  Fin Offer :" textFill="#1b95b2">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_DateF" prefHeight="17.0" prefWidth="130.0" text="             17/06/2023" />
+         </children></HBox>
+   </children>
+</VBox>

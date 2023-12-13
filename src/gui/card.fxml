@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="box" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="400.0" style="-fx-background-radius: 15;" stylesheets="@../StyleCss/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CardController">
+   <children>
+      <ImageView fx:id="imagSrc" fitHeight="155.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Black_Friday.jpg" />
+         </image>
+      </ImageView>
+      <VBox alignment="CENTER_LEFT" prefHeight="185.0" prefWidth="199.0" spacing="5.0">
+         <children>
+            <Label fx:id="name" prefHeight="45.0" prefWidth="193.0" text="      Offer_Special" textFill="#1b1a1a">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Separator maxHeight="-Infinity" prefHeight="4.0" prefWidth="182.0" />
+            <HBox prefHeight="20.0" prefWidth="199.0">
+               <children>
+                  <Label fx:id="name1" prefHeight="45.0" prefWidth="193.0" text="     BLACK FRIDAY" textFill="#1b1a1a">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ImageView fitHeight="30.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Rate.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="shadow" />
+   </styleClass>
+</HBox>

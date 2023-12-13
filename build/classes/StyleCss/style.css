@@ -1,0 +1,31 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.white-background {
+    -fx-background-color: #fff;
+}
+.transparent {
+    -fx-background-color: rgba(0,0,0,0);
+}
+.selected {
+    -fx-background-color: #F3F3F3;
+}
+.mouse-mouved:hover {
+    -fx-background-color: #E4E4E4;
+}
+
+
+.shadow {
+    -fx-effect: dropshadow(three-pass-box,rgba(0,0,0,0),10,0,0,10);
+}
+
+.affiche {
+    -fx-background-image : url('../images/3.png');
+    -fx-background-size:cover;
+}
+.crud {
+    -fx-background-image : url('../images/2.png');
+    -fx-background-size:cover;
+}
+

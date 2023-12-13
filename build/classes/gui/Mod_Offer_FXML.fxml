@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" styleClass="crud" stylesheets="@../StyleCss/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Mod_Offer_FXMLController">
+   <children>
+      <Label layoutX="88.0" layoutY="99.0" text="Title Offer" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="79.0" layoutY="183.0" text="Descrption" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="597.0" layoutY="95.0" text="Date Debut Offer" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="943.0" layoutY="139.0" text="*" textFill="#f80808" />
+      <Label layoutX="607.0" layoutY="175.0" text="Date Fin Offer" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tf_TitleOffer_Mod" layoutX="238.0" layoutY="99.0" prefHeight="25.0" prefWidth="265.0" />
+      <TextArea fx:id="tf_Description_Mod" layoutX="236.0" layoutY="180.0" prefHeight="108.0" prefWidth="264.0" />
+      <TextField fx:id="tfPrix_Mod" layoutX="234.0" layoutY="341.0" prefHeight="25.0" prefWidth="256.0" />
+      <DatePicker fx:id="tf_DateDebuOffer_Mod" layoutX="768.0" layoutY="102.0" prefHeight="25.0" prefWidth="202.0" />
+      <DatePicker fx:id="tf_DateFinOffer_Mod" layoutX="768.0" layoutY="181.0" prefHeight="25.0" prefWidth="202.0" />
+      <Button fx:id="buttonRetour" layoutX="512.0" layoutY="506.0" mnemonicParsing="false" onAction="#goToAficheOffer" prefHeight="43.0" prefWidth="170.0" styleClass="search-box" stylesheets="@../StyleCss/tableView.css" text="Retour">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttonModifierOffer" layoutX="286.0" layoutY="506.0" mnemonicParsing="false" onAction="#addAction" prefHeight="45.0" prefWidth="170.0" styleClass="search-box" stylesheets="@../StyleCss/tableView.css" text="Modifier">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Button>
+      <Label layoutX="108.0" layoutY="341.0" text="Prix" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="err_titre_offer" layoutX="389.0" layoutY="139.0" text="Veuillez remplir ce champ" textFill="RED" />
+      <Label fx:id="err_dateD_offer" layoutX="878.0" layoutY="144.0" text="Veuillez remplir ce champ" textFill="RED" />
+      <Label fx:id="err_prix_offer" layoutX="393.0" layoutY="379.0" text="Veuillez remplir ce champ" textFill="RED" />
+      <Label fx:id="err_desc_offer" layoutX="390.0" layoutY="295.0" text="Veuillez remplir ce champ" textFill="RED" />
+      <Label fx:id="err_dateF_offer" layoutX="884.0" layoutY="226.0" text="Veuillez remplir ce champ" textFill="RED" />
+      <Label fx:id="champnegatif" layoutX="115.0" layoutY="379.0" text="Champ negatif" textFill="RED" />
+      <Label fx:id="champNonValid" layoutX="121.0" layoutY="135.0" text="Champ non valide" textFill="RED" />
+      <Label fx:id="hint" layoutX="707.0" layoutY="5.0" />
+      <Label alignment="CENTER" layoutX="411.0" layoutY="16.0" text="Modifier Offer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="820.0" layoutY="457.0" mnemonicParsing="false" onAction="#file" prefHeight="38.0" prefWidth="129.0" styleClass="search-box" stylesheets="@../StyleCss/tableView.css" text="Upload">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="imageV" fitHeight="85.0" fitWidth="167.0" layoutX="842.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/images.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="297.0" layoutY="432.0" prefHeight="26.0" prefWidth="170.0" text="Ajouter une image" textFill="WHITE">
+         <font>
+            <Font name="System Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="ErrFiche" layoutX="391.0" layoutY="467.0" prefHeight="21.0" prefWidth="190.0" text="*" textFill="#da0202" />
+      <TextField fx:id="FicheArtc" layoutX="485.0" layoutY="431.0" prefHeight="31.0" prefWidth="253.0" />
+      <TextField fx:id="tfNBmax_Mod" layoutX="847.0" layoutY="288.0" prefHeight="25.0" prefWidth="129.0" />
+      <Label layoutX="606.0" layoutY="286.0" text="Nombre Max Reservation" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="err_nb_max_offer" layoutX="919.0" layoutY="323.0" text="Veuillez remplir ce champ" textFill="RED" />
+   </children>
+</AnchorPane>

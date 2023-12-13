@@ -1,0 +1,65 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.white-background {
+    -fx-background-color: #fff;
+}
+.transparent {
+    -fx-background-color: rgba(0,0,0,0);
+}
+.selected {
+    -fx-background-color: #F3F3F3;
+}
+.mouse-mouved:hover {
+    -fx-background-color: #E4E4E4;
+}
+
+.gardient-background{
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100% , #b0b2b1 , #dadbdb);
+}
+
+.container{
+    -fx-background-color: rgba(255,255,255,0.2);
+    -fx-background-radius: 10;
+}
+.shadow {
+    -fx-effect: dropshadow(three-pass-box,rgba(0,0,0,0),10,0,0,10);
+}
+.axis{
+    -fx-stroke: #fff;
+    -fx-fill: #fff;
+    -fx-front-size: 24;
+    -fx-tick-label-fill: #fff;
+}
+
+.chart-pie-label{
+    -fx-fill: #fff;
+    -fx-stroke: #fff;
+    -fx-front-size: 15;
+
+
+}
+.table-view .column-header-background{
+
+    -fx-background-radius: 30;
+    -fx-background-color : #1b95b2
+;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+}
+
+
+
+.table-view .column-header, .table-view.filter{
+    -fx-size: 40;
+    -fx-border-width: 0 0 10 0;
+    -fx-background-color: transparent;
+}
+.search-box{
+    -fx-background-color: #1b95b2;
+    -fx-background-radius: 100;
+ 
+}
